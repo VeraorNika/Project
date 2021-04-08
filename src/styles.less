@@ -1,8 +1,39 @@
 @address:url("./assets/img/first_page_fon.jpg");
-
+@background_color:#ffffff;
+@headfooter_font_size:2em;
+html{
+    height:100%;
+}
 body{
+    height:100%;
+    width:100%;
+    background-color: @background_color;
     background-image:@address;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    
+}
+header, footer{
+    background-color: @background_color;
+    font-size:@headfooter_font_size;
+    margin:5px auto;
+    border-radius:7px; 
+    width:91%; 
+    height:7%;
+    text-align:center;
+   
+}
+.container{
+    background-color: @background_color;
+    margin:0 auto; 
+    width:90%; 
+    min-height:80%;
+    display:flex;
+    justify-content:center;
+    border-radius:10px; 
+    text-align:center; 
+    font-size:1.2em;
+    padding:5px;
+    
 }
