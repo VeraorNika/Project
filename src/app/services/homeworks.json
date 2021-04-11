@@ -1,0 +1,96 @@
+{ 
+    "HomeworksList":
+    [
+        {
+        "name": "homework's name",
+        "description": "Homework's description",
+        "startDate": "2020-11-01",
+        "teacher":123,
+        "subject":"Math"
+    },{
+        "name": "homework's name",
+        "description": "Homework's description",
+        "startDate": "2020-11-01",
+        "deadlineDate":"2020-12-01",
+        "teacher":123,
+        "subject":"Math"
+    },{
+        "name": "homework's name",
+        "description": "Homework's description",
+        "startDate": "2020-11-01",
+        "deadlineDate":"2020-12-01",
+        "teacher":123,
+        "subject":"Math"
+    },{
+        "name": "homework's name",
+        "description": "Homework's description",
+        "startDate": "2020-11-01",
+        "deadlineDate":"2020-12-01",
+        "teacher":123,
+        "subject":"Math"
+    },{
+        "name": "homework's name",
+        "description": "Homework's description",
+        "startDate": "2020-11-01",
+        "deadlineDate":"2020-12-01",
+        "teacher":123,
+        "subject":"Math"
+    },{
+        "name": "homework's name",
+        "description": "Homework's description",
+        "startDate": "2020-11-01",
+        "deadlineDate":"2020-12-01",
+        "teacher":123,
+        "subject":"Math"
+    },{
+        "name": "homework's name",
+        "description": "Homework's description",
+        "startDate": "2020-11-01",
+        "deadlineDate":"2020-12-01",
+        "teacher":123,
+        "subject":"Math"
+    },{
+        "name": "homework's name",
+        "description": "Homework's description",
+        "startDate": "2020-11-01",
+        "deadlineDate":"2020-12-01",
+        "teacher":123,
+        "subject":"Math"
+    },{
+        "name": "homework's name",
+        "description": "Homework's description",
+        "startDate": "2020-11-01",
+        "deadlineDate":"2020-12-01",
+        "teacher":123,
+        "subject":"Math"
+    },{
+        "name": "homework's name",
+        "description": "Homework's description",
+        "startDate": "2020-11-01",
+        "deadlineDate":"2020-12-01",
+        "teacher":123,
+        "subject":"Math"
+    },{
+        "name": "homework's name",
+        "description": "Homework's description",
+        "startDate": "2020-11-01",
+        "deadlineDate":"2020-12-01",
+        "teacher":123,
+        "subject":"Math"
+    },{
+        "name": "homework's name",
+        "description": "Homework's description",
+        "startDate": "2020-11-01",
+        "deadlineDate":"2020-12-01",
+        "teacher":123,
+        "subject":"Math"
+    },{
+        "name": "homework's name",
+        "description": "Homework's description",
+        "startDate": "2020-11-01",
+        "deadlineDate":"2020-12-01",
+        "teacher":123,
+        "subject":"Math"
+    }
+]
+}

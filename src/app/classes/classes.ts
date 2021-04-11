@@ -17,6 +17,8 @@ export class Student extends User{
     
 }
 export class Teacher extends User{
+    degree:String;
+    experience:String;
     constructor(){
         super(); 
     }

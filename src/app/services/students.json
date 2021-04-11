@@ -1,0 +1,84 @@
+{ 
+    "StudentsList":
+    [
+        {
+        "fullName": "FIO of Student",
+        "login": "Student's login",
+        "password": "Student's password",
+        "birthday": "20.07.2000",
+        "group":439
+    },{
+        "fullName": "FIO of Student",
+        "login": "Student's login",
+        "password": "Student's password",
+        "birthday": "20.07.2000",
+        "group":439
+    },{
+        "fullName": "FIO of Student",
+        "login": "Student's login",
+        "password": "Student's password",
+        "birthday": "20.07.2000",
+        "group":439
+    },{
+        "fullName": "FIO of Student",
+        "login": "Student's login",
+        "password": "Student's password",
+        "birthday": "20.07.2000",
+        "group":439
+    },{
+        "fullName": "FIO of Student",
+        "login": "Student's login",
+        "password": "Student's password",
+        "birthday": "20.07.2000",
+        "group":439
+    },{
+        "fullName": "FIO of Student",
+        "login": "Student's login",
+        "password": "Student's password",
+        "birthday": "20.07.2000",
+        "group":439
+    },{
+        "fullName": "FIO of Student",
+        "login": "Student's login",
+        "password": "Student's password",
+        "birthday": "20.07.2000",
+        "group":439
+    },{
+        "fullName": "FIO of Student",
+        "login": "Student's login",
+        "password": "Student's password",
+        "birthday": "20.07.2000",
+        "group":439
+    },{
+        "fullName": "FIO of Student",
+        "login": "Student's login",
+        "password": "Student's password",
+        "birthday": "20.07.2000",
+        "group":439
+    },{
+        "fullName": "FIO of Student",
+        "login": "Student's login",
+        "password": "Student's password",
+        "birthday": "20.07.2000",
+        "group":439
+    },{
+        "fullName": "FIO of Student",
+        "login": "Student's login",
+        "password": "Student's password",
+        "birthday": "20.07.2000",
+        "group":439
+    },{
+        "fullName": "FIO of Student",
+        "login": "Student's login",
+        "password": "Student's password",
+        "birthday": "20.07.2000",
+        "group":439
+    },{
+        "fullName": "FIO of Student",
+        "login": "Student's login",
+        "password": "Student's password",
+        "birthday": "20.07.2000",
+        "group":439
+    }
+]
+}

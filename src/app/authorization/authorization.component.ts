@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {User} from './classes';
+import {User} from '../classes/classes';
 
 @Component({
     selector: 'authorization',

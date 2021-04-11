@@ -1,0 +1,71 @@
+{ 
+    "TeachersList":
+    [
+        {
+        "fullName": "FIO of Teacher",
+        "login": "Teacher's login",
+        "password": "Teacher's password",
+        "birthday": "30.05.1970"
+    },{
+        "fullName": "FIO of Teacher",
+        "login": "Teacher's login",
+        "password": "Teacher's password",
+        "birthday": "30.05.1970"
+    },{
+        "fullName": "FIO of Teacher",
+        "login": "Teacher's login",
+        "password": "Teacher's password",
+        "birthday": "30.05.1970"
+    },{
+        "fullName": "FIO of Teacher",
+        "login": "Teacher's login",
+        "password": "Teacher's password",
+        "birthday": "30.05.1970"
+    },{
+        "fullName": "FIO of Teacher",
+        "login": "Teacher's login",
+        "password": "Teacher's password",
+        "birthday": "30.05.1970"
+    },{
+        "fullName": "FIO of Teacher",
+        "login": "Teacher's login",
+        "password": "Teacher's password",
+        "birthday": "30.05.1970"
+    },{
+        "fullName": "FIO of Teacher",
+        "login": "Teacher's login",
+        "password": "Teacher's password",
+        "birthday": "30.05.1970"
+    },{
+        "fullName": "FIO of Teacher",
+        "login": "Teacher's login",
+        "password": "Teacher's password",
+        "birthday": "30.05.1970"
+    },{
+        "fullName": "FIO of Teacher",
+        "login": "Teacher's login",
+        "password": "Teacher's password",
+        "birthday": "30.05.1970"
+    },{
+        "fullName": "FIO of Teacher",
+        "login": "Teacher's login",
+        "password": "Teacher's password",
+        "birthday": "30.05.1970"
+    },{
+        "fullName": "FIO of Teacher",
+        "login": "Teacher's login",
+        "password": "Teacher's password",
+        "birthday": "30.05.1970"
+    },{
+        "fullName": "FIO of Teacher",
+        "login": "Teacher's login",
+        "password": "Teacher's password",
+        "birthday": "30.05.1970"
+    },{
+        "fullName": "FIO of Teacher",
+        "login": "Teacher's login",
+        "password": "Teacher's password",
+        "birthday": "30.05.1970"
+    }
+]
+}
