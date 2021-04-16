@@ -1,0 +1,43 @@
+<div class="main_container">
+    <teacher-navigation> </teacher-navigation>
+    <h3>Детали домашней работы</h3>
+    <form [formGroup]="editHomework" novalidate>
+        <div class="form-group">
+            <label>Домашнее задание:</label> <br>
+            <textarea rows="3" class="form-control" name="homework_name" formControlName="homework_name"
+                style="resize: none;"  matInput matTooltip="Вы не можете изменить это поле"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Группа:</label><br>
+            <input class="form-control" name="homework_group" formControlName="homework_group"  />
+        </div>
+
+        <div class="form-group">
+            <label>Начальная дата:</label><br>
+            <input class="form-control" id="homework_startDate" value="{{startDate}}"
+                formControlName="homework_startDate" type="date" matInput
+                matTooltip="Вы не можете изменить это поле" />
+        </div>
+        <div class="form-group">
+            <label>Дата завершения:</label><br>
+            <input class="form-control" name="homework_deadlineDate" formControlName="homework_deadlineDate" type="date"
+                matInput matTooltip="Конечная дата не должна быть меньше начальной" />
+        </div>
+
+        <div class="form-group">
+            <label>Подробное описание:</label> <br>
+            <textarea rows="4" class="form-control" name="homework_description" formControlName="homework_description"
+                style="resize: none;"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Пожелания к выполнению:</label> <br>
+            <textarea rows="4" class="form-control" name="homework_wishes" formControlName="homework_wishes"
+                style="resize: none;"></textarea>
+        </div>
+        <br>
+        <button mat-button (click)="saveHomework()" [disabled]="editHomework.invalid" routerLink="../"> Сохранить
+        </button>
+    </form>
+</div>

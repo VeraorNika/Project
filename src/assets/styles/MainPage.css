@@ -1,0 +1,57 @@
+.main_container {
+  position: relative;
+  border: 1px solid #2c7e9e;
+  margin: 0 auto;
+  border-radius: 5px;
+  min-height: 90%;
+  color: #2c7e9e;
+  padding: 10px;
+}
+.main_container h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 5px;
+  text-align: left;
+  font-weight: 600;
+}
+.main_container table {
+  margin: 10px;
+}
+.main_container button {
+  display: block;
+  position: relative;
+  left: 0;
+  margin-left: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 20%;
+  height: 30px;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 3px;
+  background: #56b2d6;
+  box-shadow: 0 -3px #3d92b4 inset;
+  cursor: pointer;
+}
+.main_container button:hover {
+  background: #3d92b4;
+  cursor: pointer;
+}
+.main_container table {
+  margin: 0 auto;
+  width: 95%;
+  text-align: left;
+}
+.main_container table tr:hover {
+  background-color: #fbfcc0;
+}
+.main_container table tr td.name:hover {
+  cursor: help;
+}
+.main_container table tr td.student_status:hover {
+  cursor: pointer;
+}
+.main_container th.mat-sort-header-sorted {
+  color: black;
+}

@@ -1,0 +1,47 @@
+<div class="registration_container">
+    <h3>Регистрация</h3>
+    <form [formGroup]="Registration" novalidate (ngSubmit)="register()">
+
+        <div class="form-group">
+            <input class="form-control" name="fullName" formControlName="fullName" placeholder="ФИО" matInput
+                matTooltip="Поле не должно быть пустым"
+                [matTooltipDisabled]="(!_fullName.touched) || (_fullName.valid)" />
+        </div>
+
+        <div class="form-group" [hidden]="!isStudent">
+            <input class="form-control" name="group" formControlName="group" placeholder="Учебная группа" type="number"
+                [required]="isStudent" matInput matTooltip="Номер группы должен состоять из 3 цифр"
+                [matTooltipDisabled]="(!_group.touched) || (_group.valid)" />
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" name="birthday" formControlName="birthday" data-placeholder="Дата рождения"
+                type="date" />
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" name="login" formControlName="login" placeholder="Логин" matInput
+                matTooltip="Логин должен состоять не менее, чем из 6 символов. Разрешены символы латинского алфавита и цифры"
+                [matTooltipDisabled]="(!_login.touched) || (_login.valid)" />
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" name="password" formControlName="password" placeholder="Пароль" matInput
+                matTooltip="Пароль должен состоять не менее, чем из 6 символов и обязательно включать в себя  не менее 1 заглавного и  1 строчного символа латинского алфавита, а также не менее 1 цифры "
+                [matTooltipDisabled]="(!_password.touched) || (_password.valid)" />
+        </div>
+
+        <div class="form-group">
+            <input type="radio" name="person" checked (click)="changetoStudent()">Студент
+            <input type="radio" name="person" (click)="changetoTeacher()">Преподаватель
+        </div>
+
+        <div class="form-group">
+            <input type="submit" [disabled]="Registration.invalid" value="Регистрация" mat-button
+                matTooltip="Нажимая эту кнопку, вы подтверждаете корректность введённых данных" />
+        </div>
+
+    </form>
+
+    <a routerLink="">Уже зарегистрированы?&#8594;Войти </a>
+</div>

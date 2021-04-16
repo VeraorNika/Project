@@ -1,0 +1,66 @@
+* {
+  outline: none;
+  outline-width: 0px;
+  outline-color: white;
+}
+.registration_container {
+  border: 3px dotted #67bddf;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 50%;
+  height: 70%;
+  padding: 10px;
+  color: #2c7e9e;
+}
+.form-group {
+  margin: 20px;
+  position: relative;
+}
+.form-control {
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+  border-radius: 5px;
+  height: 20px;
+  border: 2px solid #767676;
+}
+input.ng-touched.ng-invalid {
+  border-color: #e94a4a;
+}
+input.ng-touched.ng-valid:focus {
+  border-color: #30ec30;
+}
+input[type="submit"] {
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+  height: 30px;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 3px;
+  background: #3da6cf;
+  box-shadow: 0 -3px #2c7e9e inset;
+  cursor: pointer;
+}
+input[type="submit"]:hover {
+  background: #2c7e9e;
+  cursor: pointer;
+}
+input[type="submit"]:disabled {
+  cursor: not-allowed;
+}
+a {
+  color: #2c7e9e;
+}
+a:hover {
+  color: #063649;
+}
+h3 {
+  margin: 0px;
+}

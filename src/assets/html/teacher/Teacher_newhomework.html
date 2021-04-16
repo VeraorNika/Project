@@ -1,0 +1,53 @@
+<div class="main_container" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>
+    <h4 mat-dialog-title>Заполните форму</h4>
+    <form [formGroup]="NewHomework" novalidate (ngSubmit)="addNewHomework()">
+        <div class="form-group">
+            <label>Домашнее задание:</label> <br>
+            <textarea matInput matTooltip="Поле не должно быть пустым  и должно содержать не более 50 символов"
+                [matTooltipDisabled]="(!_homework_name.touched) || (_homework_name.valid)" rows="3" class="form-control"
+                name="homework_name" formControlName="homework_name" style="resize:none;"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Группа:</label><br>
+            <input type="number" matInput matTooltip="Номер группы должен состоять из 3 цифр"
+                [matTooltipDisabled]="(!_homework_group.touched) || (_homework_group.valid)" class="form-control"
+                name="homework_group" formControlName="homework_group" />
+        </div>
+
+        <div class="form-group">
+            <label>Начальная дата:</label><br>
+            <input class="form-control" name="homework_startDate" formControlName="homework_startDate" type="date" />
+        </div>
+
+        <div class="form-group">
+            <label>Дата завершения:</label><br>
+            <input class="form-control" name="homework_deadlineDate" formControlName="homework_deadlineDate"
+                type="date" />
+        </div>
+
+        <div class="form-group">
+            <label>Подробное описание:</label> <br>
+            <textarea matInput matTooltip="Поле не должно быть пустым"
+                [matTooltipDisabled]="(!_homework_description.touched) || (_homework_description.valid)" rows="4"
+                class="form-control" name="homework_description" formControlName="homework_description"
+                style="resize: none;"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Пожелания к выполнению:</label> <br>
+            <textarea rows="4" class="form-control" name="homework_wishes" formControlName="homework_wishes"
+                style="resize: none;"></textarea>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <button mat-button (click)="addNewHomework()" [disabled]="NewHomework.invalid" mat-button
+                matTooltip="Не все поля формы заполнены корректно"
+                [matTooltipDisabled]="NewHomework.valid">Добавить</button>
+            <button mat-button (click)="dialogRef.close()">Отмена</button>
+        </div>
+
+    </form>
+
+</div>

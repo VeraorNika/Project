@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
     selector: 'appcomponent',
     template: `
      <router-outlet></router-outlet>`
-
-
 })
 export class AppComponent {
 

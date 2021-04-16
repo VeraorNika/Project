@@ -1,0 +1,68 @@
+* {
+  outline: none;
+  outline-width: 0px;
+  outline-color: white;
+}
+.main_container {
+  padding: 0px;
+  width: 600px;
+  border: 1px solid #3d92b4;
+  border-image-width: 0px;
+  color: #266a85;
+  padding-bottom: 5px;
+}
+.main_container h4 {
+  display: block;
+  background-color: #3d92b4;
+  text-align: center;
+  width: 100%;
+  color: white;
+  margin: 0 auto;
+}
+.main_container form > .form-group {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.main_container form > .form-group input,
+.main_container form > .form-group textarea {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  border-radius: 5px;
+  border: 2px solid #767676;
+}
+.main_container form > .form-group input.ng-touched.ng-invalid,
+.main_container form > .form-group textarea.ng-touched.ng-invalid {
+  border-color: #e94a4a;
+}
+.main_container form > .form-group input.ng-touched.ng-valid:focus,
+.main_container form > .form-group textarea.ng-touched.ng-valid:focus {
+  border-color: #30ec30;
+}
+.main_container form > .form-group input {
+  height: 20px;
+}
+.main_container form > .form-group button {
+  display: inline-block;
+  position: relative;
+  left: 0;
+  margin: 0 auto;
+  width: 30%;
+  height: 30px;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 3px;
+  background: #56b2d6;
+  box-shadow: 0 -3px #3d92b4 inset;
+  cursor: pointer;
+}
+.main_container form > .form-group button:hover {
+  background: #3d92b4;
+  cursor: pointer;
+}
+.main_container form > .form-group button:disabled {
+  cursor: not-allowed;
+}

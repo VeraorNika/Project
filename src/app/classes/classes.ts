@@ -1,26 +1,23 @@
-export class User {
-    fullName: string;
-    login: string;
-    password: string;
-    birthday:Date;
-    constructor(){  
-    }
-  
+export interface User{
+    fullName?:string;
+    login?:string;
+    password?:string;
+    birthday?:Date;
+}
+export class Student{
+    fullName:string;
+    login:string;
+    password:string;
+    birthday?:Date;
+    group:number;
+    constructor(){};
+}
+export class Teacher{
+    fullName:string;
+    login:string;
+    password:string;
+    constructor(){};
+    // birthday:Date;
+    // degree?:string;
+}
 
-}
-export class Student extends User{
-    group: number;
-    constructor(){
-        super();
-    }
-   
-    
-}
-export class Teacher extends User{
-    degree:String;
-    experience:String;
-    constructor(){
-        super(); 
-    }
-   
-}

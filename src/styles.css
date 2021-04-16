@@ -1,7 +1,9 @@
 html {
   height: 100%;
+  position: relative;
 }
 body {
+  position: relative;
   height: 100%;
   width: 100%;
   background-color: #ffffff;
@@ -9,6 +11,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  margin: 0px;
 }
 header,
 footer {
@@ -18,13 +21,15 @@ footer {
   border-radius: 7px;
   width: 91%;
   height: 7%;
+  color: #2c7e9e;
   text-align: center;
 }
 .container {
+  position: relative;
   background-color: #ffffff;
   margin: 0 auto;
   width: 90%;
-  min-height: 80%;
+  min-height: 85%;
   display: flex;
   justify-content: center;
   border-radius: 10px;
@@ -32,6 +37,3 @@ footer {
   font-size: 1.2em;
   padding: 5px;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

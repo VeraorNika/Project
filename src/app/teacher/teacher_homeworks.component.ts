@@ -1,51 +1,54 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Teacher, Student } from '../classes/classes';
 import { Homework } from '../classes/Homework_class';
 import { HomeworkService } from '../services/homework.service'
 
-import {TeacherNewHomeworkComponent} from './teacher_newhomework.component';
+import {NewHomeworkComponent} from './teacher_newhomework.component';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
-    selector: 'teacher_homeworks',
-    template: `
-    <teacher_navigation> </teacher_navigation>
-    <button (click)="addHomework()"> Добавить домашнее задание</button>
-    <p>Домашние задания: </p>
-    <table>
-        <thead>
-            <tr>
-                 <th>Предмет</th> 
-                 <th>Домашнее задание</th>
-                 <th>Дата начала</th> 
-                 <th>Дата окончания</th>
-            </tr>
-        </thead>
-            <tr *ngFor="let homework of homeworks">
-                <th>{{homework.subject}} </th>
-                <th>{{homework.name}} </th>
-                <th>{{homework.startDate}} </th>
-                <th>{{homework.deadlineDate}} </th>
-            </tr>
-   </table>
-    
-    
-    
-    `,
+    selector: 'homeworks',
+    styleUrls:['../../assets/styles/MainPage.css'],
+    templateUrl:'../../assets/html/teacher/Teacher_homeworks.html',
     providers: [HomeworkService]
 })
-export class TeacherHomeworksComponent {
-    teacher: Teacher = new Teacher();
+export class HomeworksComponent {
+    
+    teacher: Teacher;
     constructor(private homeworkService: HomeworkService, public dialog: MatDialog) { };
     homeworks: Homework[] = [];
+    SortedHomeworks = new MatTableDataSource(this.homeworks);
+
     ngOnInit(): void {
-        this.homeworkService.getHomeworks().subscribe(data => this.homeworks = data["HomeworksList"]);
+        let homework:Homework=new Homework();
+        homework.subject="Math";
+        homework.name="ДЗ по матанализу от 19 ноября";
+        homework.startDate=new Date(Date.parse("2021-11-04"));
+        homework.deadlineDate=new Date(Date.parse("2021-11-15"));
+        this.homeworks.push(homework);
+
+        let homework2:Homework=new Homework();
+        homework2.subject="Algebra";
+        homework2.name="ДЗ по алгебре от 19 ноября";
+        homework2.startDate=new Date(Date.parse("2020-11-04"));
+        homework2.deadlineDate=new Date(Date.parse("2020-11-15"));
+        this.homeworks.push(homework2);
+        // this.homeworkService.getHomeworks().subscribe(data => this.homeworks = data["HomeworksList"]);
         console.log(this.homeworks);
 
     }
-    addHomework(){
-        let dialog=this.dialog.open(TeacherNewHomeworkComponent);
-        dialog.afterClosed().subscribe(str=> console.log(str));
+    displayedColumns: string[] = ['subject', 'name', 'startDate', 'deadlineDate'];
+
+    @ViewChild(MatSort) sort: MatSort;
+
+    ngAfterViewInit() {
+        this.SortedHomeworks.sort = this.sort;
     }
 
+    addHomework(){
+        let dialog=this.dialog.open(NewHomeworkComponent);
+        dialog.afterClosed().subscribe(str=> console.log(str));
+    }
 }

@@ -1,35 +1,40 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import {Teacher, Student} from '../classes/classes';
 import {TeacherService} from '../services/teacher.service';
 
 @Component({
-    selector: 'student_teachers',
-    template: `<student_navigation></student_navigation>
-    <h3>Список преподавателей</h3>
-    <table>
-    <thead>
-        <tr>
-            <th>Преподаватель</th> 
-        </tr>
-    </thead>
-        <tr *ngFor="let teacher of teachers">
-            <th>{{teacher.fullName}} </th>
-         </tr>
-   </table>
-    `,
+    selector: 'teachers',
+    styleUrls:['../../assets/styles/MainPage.css'],
+    templateUrl:'../../assets/html/student/Student_teachers.html',
      providers:[TeacherService]
 })
-export class StudentTeachersComponent { 
-
+export class TeachersComponent { 
     student:Student=new Student();
-    constructor(private studentService: TeacherService ){}
+
+    constructor(private teacherService: TeacherService ){}
     teachers:Teacher[]=[];
+    SortedTeachers:any; 
     
     ngOnInit(): void {
-       this.studentService.getTeachers().subscribe(data=> this.teachers=data["TeachersList"]);
-       console.log(this.teachers);
-        
+        // let teacher:Teacher={fullName:"Сидоров Сидор"};
+        // this.teachers.push(teacher);
+        // let teacher2:Teacher={fullName:"Иванов Иван"};
+        // this.teachers.push(teacher2);
+        this.teachers=this.teacherService.getTeachers();
+        this.SortedTeachers=new MatTableDataSource(this.teachers);
+        console.log("В компоненте:", this.teachers);  
     }
+    
+    displayedColumns: string[] = ['fullName'];
+
+        @ViewChild(MatSort) sort: MatSort;
+
+        ngAfterViewInit() {
+            this.SortedTeachers.sort = this.sort;
+        }
 
 
 

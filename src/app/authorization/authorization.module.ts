@@ -1,10 +1,10 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {Routes, RouterModule} from '@angular/router';
-import { AuthorizationGuard }   from './authorization.guard';
 
+import { AuthorizationGuard }   from './authorization.guard';
 import { RegistrationComponent}   from './registration.component';
 import { AuthorizationComponent }   from './authorization.component';
 
@@ -16,7 +16,7 @@ const AuthoappRoutes: Routes =[
 
 
 @NgModule({
-    imports:      [ BrowserModule, FormsModule, RouterModule.forRoot(AuthoappRoutes)],
+    imports:      [ BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(AuthoappRoutes), MatTooltipModule],
     declarations: [RegistrationComponent, AuthorizationComponent],
     exports:[RouterModule, RegistrationComponent, AuthorizationComponent],
     providers:    [AuthorizationGuard]

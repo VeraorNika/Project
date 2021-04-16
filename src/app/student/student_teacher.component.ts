@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 @Component({
-    selector: 'student_teacher',
-    template: `<student_navigation></student_navigation>
-        <h3>Учитель, интересующий студента</h3>
-    
-    
-    `
+    selector: 'teacher',
+    templateUrl:'../../assets/html/student/Student_teacher.html'
 })
-export class StudentTeacherComponent { }
+export class TeacherComponent { }

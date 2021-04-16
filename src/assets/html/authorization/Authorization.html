@@ -1,0 +1,29 @@
+<div class="authorization_container">
+    <h3>Авторизация</h3>
+    <form [formGroup]="Authorization" novalidate (ngSubmit)="submit()">
+        <div class="form-group">
+            <input class="form-control" name="login" formControlName="login" placeholder="Логин" matInput
+                matTooltip="Логин должен состоять не менее, чем из 6 символов. Разрешены символы латинского алфавита и цифры"
+                [matTooltipDisabled]="(!_login.touched) || (_login.valid)" />
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" name="password" formControlName="password" placeholder="Пароль" matInput
+                matTooltip="Пароль должен состоять не менее, чем из 6 символов и обязательно включать в себя  не менее 1 заглавного и  1 строчного символа латинского алфавита, а также не менее 1 цифры "
+                [matTooltipDisabled]="(!_password.touched) || (_password.valid)" />
+        </div>
+        <div class="form-group">
+            <input type="radio" name="person" checked (click)="changetoStudent()">Студент
+            <input type="radio" name="person" (click)="changetoTeacher()">Преподаватель
+        </div>
+        <div class="form-group">
+            <button class="submitbutton" (click)="submit()" [disabled]="Authorization.invalid"> Войти в систему
+            </button>
+        </div>
+    </form>
+    <a routerLink="/registration">Еще не зарегистрированы?&#8594;Регистрация </a>
+    <br>
+    <a routerLink="/student-main-page">Страница студента</a>
+    <br>
+    <a routerLink="/teacher-main-page">Страница преподавателя</a>
+</div>

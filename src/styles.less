@@ -1,10 +1,13 @@
 @address:url("./assets/img/first_page_fon.jpg");
 @background_color:#ffffff;
 @headfooter_font_size:2em;
+@headerfooter_color: rgb(44, 126, 158);
 html{
     height:100%;
+    position: relative;
 }
 body{
+    position: relative;
     height:100%;
     width:100%;
     background-color: @background_color;
@@ -12,6 +15,7 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    margin:0px;
     
 }
 header, footer{
@@ -21,14 +25,16 @@ header, footer{
     border-radius:7px; 
     width:91%; 
     height:7%;
+    color:@headerfooter_color;
     text-align:center;
    
 }
 .container{
+    position:relative;
     background-color: @background_color;
     margin:0 auto; 
     width:90%; 
-    min-height:80%;
+    min-height:85%;
     display:flex;
     justify-content:center;
     border-radius:10px; 

@@ -1,0 +1,74 @@
+@headerfooter_color: rgb(44, 126, 158);
+@button_color: rgb(86, 178, 214);
+@button_shadow_color:rgb(61, 146, 180);
+@tr_hover_color:rgb(251, 252, 192);
+.main_container{
+    position:relative;
+    border:1px solid @headerfooter_color;
+    margin:0 auto;
+    border-radius:5px;
+    min-height:90%;
+    color:@headerfooter_color;
+    padding:10px;
+    h3{
+        margin-top:20px;
+        margin-bottom:20px;
+        margin-left:5px;
+        text-align:left;
+        font-weight:600;
+        
+    }
+    table{
+        margin:10px;
+    }
+    button{
+        display: block;
+        position:relative;
+        // right:0;
+        left:0;
+        margin-left:5px;
+        margin-top: 20px;
+        margin-bottom:20px;
+        width: 20%;
+        height: 30px;
+        color: white;
+        font-size: 14px;
+        border: none;
+        border-radius: 3px;
+        background: @button_color;
+        box-shadow: 0 -3px @button_shadow_color inset;
+        cursor: pointer;
+    
+        &:hover {
+            background: @button_shadow_color;
+            cursor: pointer;
+        }
+    }
+    table {
+        margin:0 auto;
+        width: 95%;
+        text-align: left;
+        tr{
+            &:hover{
+                background-color:@tr_hover_color;
+            }
+            td.name{
+                &:hover{
+                    cursor:help;
+                }
+            }
+            td.student_status{
+                &:hover{
+                    cursor:pointer;
+                }
+            }
+        }
+
+        }
+      
+      
+      th.mat-sort-header-sorted {
+        color: black;
+      }
+ 
+}

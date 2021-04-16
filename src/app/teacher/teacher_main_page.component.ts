@@ -1,40 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import {Teacher, Student} from '../classes/classes';
-import {StudentService} from '../services/student.service';
+import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
+
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+
+
+import { Teacher, Student } from '../classes/classes';
+import { StudentService } from '../services/student.service';
+
+// firebase
+import { AngularFireDatabase } from "@angular/fire/database";
 
 @Component({
     selector: 'teacher',
-    template: ` <teacher_navigation> </teacher_navigation>
-   <p>Список студентов</p> 
-   <table>
-<thead>
-<tr>
-    <th>Студент</th> 
-    <th>Группа</th> 
-    <th>Домашнее задание</th> 
-    <th>Статус </th>
-</tr>
-</thead>
-<tr *ngFor="let student of students">
-    <th>{{student.fullName}} </th>
-    <th>{{student.group}} </th>
-    <th> </th>
-    <th> </th>
-</tr>
-   </table>
-   `,
-   providers:[StudentService]
+    styleUrls: ['../../assets/styles/MainPage.css'],
+    templateUrl: '../../assets/html/teacher/Teacher_main_page.html',
+    providers: [StudentService]
 })
-export class TeacherComponent implements OnInit{ 
+export class TeacherComponent implements OnInit {
+    teacher: Teacher = new Teacher();
 
-teacher:Teacher=new Teacher();
-constructor(private studentService: StudentService ){}
-students:Student[]=[];
+    constructor(private studentService: StudentService) { }
+    students: Student[] = [];
+    SortedStudents: any;
 
-ngOnInit(): void {
-   this.studentService.getStudents().subscribe(data=> this.students=data["StudentsList"]);
-   console.log(this.students);
-    
-}
+    ngOnInit(): void {
+        this.students = this.studentService.getStudents();
+        this.SortedStudents = new MatTableDataSource(this.students);
+        console.log("В компоненте: ", this.students);
+
+    }
+
+    displayedColumns: string[] = ['fullName', 'group'];
+
+    @ViewChild(MatSort) sort: MatSort;
+
+    ngAfterViewInit() {
+        this.SortedStudents.sort = this.sort;
+    }
 }
 

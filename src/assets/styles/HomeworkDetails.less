@@ -1,0 +1,41 @@
+@input_border_color: rgb(118, 118, 118);
+.main_container{
+    h3{
+        text-align: center;
+    }
+    form>.form-group {
+        margin: 0 auto;
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 10px;
+
+        input,
+        textarea{
+            display: block;
+            margin: 0 auto;
+            width: 50%;
+            border-radius: 5px;
+            border: 2px solid @input_border_color;
+            &.ng-touched {
+                &.ng-invalid {
+                    border-color: rgb(233, 74, 74);
+                }
+
+                &.ng-valid:focus {
+                    border-color: rgb(48, 236, 48);
+                }
+            }
+            &:disabled{
+                cursor:not-allowed;
+            }
+        }
+        input{
+            height:20px;
+        }}
+    form>button{
+        margin:0 auto;
+        &:disabled {
+            cursor: not-allowed;
+        }
+    }
+}

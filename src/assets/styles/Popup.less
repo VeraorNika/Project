@@ -1,0 +1,81 @@
+@h4_background: rgb(61, 146, 180);
+@font-color: rgb(38, 106, 133);
+@input_border_color: rgb(118, 118, 118);
+@button_color: rgb(86, 178, 214);
+@button_shadow_color:rgb(61, 146, 180);
+* {
+    outline: none;
+    outline-width: 0px;
+    outline-color: white;
+}
+
+.main_container {
+    padding: 0px;
+    width: 600px;
+    border: 1px solid @h4_background;
+    border-image-width: 0px;
+    color: @font-color;
+    padding-bottom: 5px;
+
+    h4 {
+        display: block;
+        background-color: @h4_background;
+        text-align: center;
+        width: 100%;
+        color: white;
+        margin: 0 auto;
+    }
+
+    form>.form-group {
+        margin: 0 auto;
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 10px;
+
+        input,
+        textarea{
+            display: block;
+            margin: 0 auto;
+            width: 50%;
+            border-radius: 5px;
+            border: 2px solid @input_border_color;
+            &.ng-touched {
+                &.ng-invalid {
+                    border-color: rgb(233, 74, 74);
+                }
+
+                &.ng-valid:focus {
+                    border-color: rgb(48, 236, 48);
+                }
+
+            }
+        }
+        input{
+            height:20px;
+        }
+        button{
+            display: inline-block;
+            position:relative;
+            // right:0;
+            left:0;
+            margin:0 auto;
+            width: 30%;
+            height: 30px;
+            color: white;
+            font-size: 14px;
+            border: none;
+            border-radius: 3px;
+            background: @button_color;
+            box-shadow: 0 -3px @button_shadow_color inset;
+            cursor: pointer;
+        
+            &:hover {
+                background: @button_shadow_color;
+                cursor: pointer;
+            }
+            &:disabled {
+                cursor: not-allowed;
+            }
+        }
+    }
+}

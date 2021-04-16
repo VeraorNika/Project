@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'teacher_navigation',
+    selector: 'teacher-navigation',
+    styleUrls: ['../../assets/styles/Navigation.css'],
     template: `<nav>
-<a routerLink="/teacher_main_page"> Все студенты</a>
-<a  routerLink="/teacher_main_page/teacher_homeworks"> Мои задания</a>
+<a routerLink="/teacher-main-page"> Все студенты</a>
+<a  routerLink="/teacher-main-page/teacher-homeworks"> Мои задания</a>
 <a routerLink="/authorization"> Выйти из системы</a>
     </nav>`
 })
-export class TeacherNavigationComponent { 
-
+export class NavigationComponent {
 
 }
