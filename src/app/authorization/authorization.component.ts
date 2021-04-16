@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {User} from '../classes/classes';
+import {Teacher, Student} from '../classes/classes'
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 
 import {AngularFireDatabase} from "@angular/fire/database";
@@ -17,7 +17,6 @@ export class AuthorizationComponent {
         get _login() {return this.Authorization.get('login');}
         get _password() {return this.Authorization.get('password');}
     
-        user: User;
         
         submit(){
             // console.log(firebase);

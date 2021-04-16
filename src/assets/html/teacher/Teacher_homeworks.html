@@ -20,13 +20,15 @@
         <ng-container matColumnDef="startDate">
             <th mat-header-cell *matHeaderCellDef mat-sort-header
                 matTooltip="Нажмите, чтобы отсортировать задания по начальной дате">Задано</th>
-            <td mat-cell *matCellDef="let element"> {{element.startDate.toLocaleDateString("ru")}} </td>
+            <!-- <td mat-cell *matCellDef="let element"> {{element.startDate.toLocaleDateString("ru")}} </td> -->
+            <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
         </ng-container>
 
         <ng-container matColumnDef="deadlineDate">
             <th mat-header-cell *matHeaderCellDef mat-sort-header
                 matTooltip="Нажмите, чтобы отсортировать задания по сроку сдачи">Срок сдачи</th>
-            <td mat-cell *matCellDef="let element"> {{element.deadlineDate.toLocaleDateString("ru")}} </td>
+            <!-- <td mat-cell *matCellDef="let element"> {{element.deadlineDate.toLocaleDateString("ru")}} </td> -->
+            <td mat-cell *matCellDef="let element"> {{element.deadlineDate}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

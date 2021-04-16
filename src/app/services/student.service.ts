@@ -1,13 +1,8 @@
 import {Student} from '../classes/classes';
 import {Injectable} from '@angular/core';
-// import {HttpClient} from '@angular/common/http';
 import { map } from 'rxjs/operators';
-
 import {AngularFireDatabase, AngularFireList} from "@angular/fire/database";
  
-// Способ подключения не через AngularFireDatabase
-// import firebase from 'firebase/app';
-// import { environment } from './../../environments/environment';
 
 @Injectable()
 export class StudentService{

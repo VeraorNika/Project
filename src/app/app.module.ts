@@ -1,4 +1,4 @@
-import { environment } from './../environments/environment';
+
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
@@ -7,9 +7,8 @@ import { HttpClientModule }   from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 
-// разблокировать, если все порушится
-// import {AngularFireModule} from "angularfire2";
-// import {AngularFireDatabaseModule} from "angularfire2/database";
+// import firebase from 'firebase/app';
+import { environment } from './../environments/environment';
 
 import {MatDialogModule} from '@angular/material/dialog';
 import {MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';

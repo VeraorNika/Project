@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Homework } from '../classes/classes';
 @Component({
     selector: 'homework_detail',
     styleUrls: ['../../assets/styles/MainPage.css', '../../assets/styles/HomeworkDetails.css'],
@@ -10,9 +11,9 @@ export class HomeworkDetailsComponent {
 
     editHomework: FormGroup = new FormGroup(
         {
-            "homework_name": new FormControl({value:"Some name", disabled:true}),
-            "homework_group": new FormControl({value:439, disabled:true}),
-            "homework_startDate": new FormControl({value:"", disabled:true}),
+            "homework_name": new FormControl({ value: "Some name", disabled: true }),
+            "homework_group": new FormControl({ value: 439, disabled: true }),
+            "homework_startDate": new FormControl({ value: "", disabled: true }),
             "homework_deadlineDate": new FormControl("", [Validators.required, this.homeworkDeadlineDateValidator]),
             "homework_description": new FormControl("Description", Validators.required),
             "homework_wishes": new FormControl("Wishes", Validators.maxLength(100)),

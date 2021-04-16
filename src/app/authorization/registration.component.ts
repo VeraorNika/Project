@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {User, Teacher, Student} from '../classes/classes';
+import {Teacher, Student} from '../classes/classes';
 
 
 @Component({
@@ -24,7 +24,6 @@ export class RegistrationComponent {
     get _login() {return this.Registration.get('login');}
     get _password() {return this.Registration.get('password');}
 
-    user: User;
     isStudent:boolean=true;
     changetoStudent(){
         this.isStudent=true;

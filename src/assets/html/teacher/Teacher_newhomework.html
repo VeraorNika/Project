@@ -1,6 +1,14 @@
-<div class="main_container" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>
-    <h4 mat-dialog-title>Заполните форму</h4>
-    <form [formGroup]="NewHomework" novalidate (ngSubmit)="addNewHomework()">
+<div class="main_container" >
+    <h4 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>Заполните форму</h4>
+    <form [formGroup]="NewHomework" novalidate>
+        
+        <div class="form-group">
+            <label>Предмет:</label> <br>
+            <input matInput matTooltip="Поле не должно быть пустым  и должно содержать не более 50 символов"
+                [matTooltipDisabled]="(!_homework_subject.touched) || (_homework_subject.valid)"  class="form-control"
+                name="homework_subject" formControlName="homework_subject" style="resize:none;" />
+        </div>
+        
         <div class="form-group">
             <label>Домашнее задание:</label> <br>
             <textarea matInput matTooltip="Поле не должно быть пустым  и должно содержать не более 50 символов"
@@ -43,8 +51,7 @@
 
         <div class="form-group">
             <button mat-button (click)="addNewHomework()" [disabled]="NewHomework.invalid" mat-button
-                matTooltip="Не все поля формы заполнены корректно"
-                [matTooltipDisabled]="NewHomework.valid">Добавить</button>
+                matTooltip="Не все поля формы заполнены корректно" [matTooltipDisabled]="NewHomework.valid">Добавить</button>
             <button mat-button (click)="dialogRef.close()">Отмена</button>
         </div>
 
