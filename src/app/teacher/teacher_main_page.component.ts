@@ -2,21 +2,26 @@ import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Teacher, Student } from '../classes/classes';
-import { StudentService } from '../services/student.service';
 
-// firebase
+
+// firebase и сервисы
+import { StudentService } from '../services/student.service';
+import { CommonTeacherService } from '../services/common.teacher.service';
 import { AngularFireDatabase } from "@angular/fire/database";
 
 @Component({
     selector: 'teacher',
-    styleUrls: ['../../assets/styles/MainPage.css'],
-    templateUrl: '../../assets/html/teacher/Teacher_main_page.html',
+    styleUrls: ['./../common_styles/MainPage.css'],
+    templateUrl: './Teacher_main_page.html',
     providers: [StudentService]
 })
 export class TeacherComponent implements OnInit {
     teacher: Teacher = new Teacher();
-
-    constructor(private studentService: StudentService) { }
+    
+    constructor(private studentService: StudentService, commonTeacherService: CommonTeacherService) {
+      this.teacher=commonTeacherService.teacher;
+      console.log(this.teacher);
+    }
     students: Student[] = [];
     SortedStudents: any;
 

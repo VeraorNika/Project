@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import { map } from 'rxjs/operators';
 import {AngularFireDatabase, AngularFireList} from "@angular/fire/database";
  
-
+import  * as moment from 'moment';
 @Injectable()
 export class StudentService{
     
@@ -25,7 +25,8 @@ export class StudentService{
                         fullName:y.fullName,
                         group:y.group,
                         login:y.login,
-                        password:y.password
+                        password:y.password,
+                        birthday:y.birthday
                     }
                     // console.log(student instanceof Student); => оказывается, что объекты не принадлежат классу Student, несмотря на объявление
                     this.students.push(student);

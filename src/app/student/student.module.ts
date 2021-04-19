@@ -14,31 +14,27 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from "@angular/cdk/drag-drop";
-import { HomeworkDetailsComponent } from './student_homework_details.component';
 
 import { StudentComponent } from './student_main_page.component';
 import { StudentNavigationComponent } from './student_navigation.component';
-import {TeacherComponent } from './student_teacher.component';
 import {TeachersComponent } from './student_teachers.component';
+
+import {CommonStudentService} from '../services/common.student.service';
 
 
 const StudappRoutes: Routes = [
     { path: 'student-main-page', component: StudentComponent },
     { path: 'student-main-page/teachers', component: TeachersComponent },
-    { path: 'student-main-page/teachers/teacher', component: TeacherComponent },
-    { path: 'student-main-page/homework-details', component: HomeworkDetailsComponent },
-    { path: 'student-main-page/teacher', component: TeacherComponent },
-
+    
 ];
 
 
 @NgModule({
     imports: [BrowserModule, FormsModule, MatDialogModule, RouterModule.forRoot(StudappRoutes), CommonModule, DragDropModule, MatTooltipModule, MatTableModule, MatSortModule],
-    declarations: [StudentComponent, StudentNavigationComponent, HomeworkDetailsComponent, TeacherComponent, TeachersComponent],
-    exports: [RouterModule, StudentComponent, StudentNavigationComponent, HomeworkDetailsComponent, TeacherComponent, TeachersComponent],
-    entryComponents: [HomeworkDetailsComponent],
+    declarations: [StudentComponent, StudentNavigationComponent, TeachersComponent],
+    exports: [RouterModule, StudentComponent, StudentNavigationComponent, TeachersComponent],
+    // entryComponents: [HomeworkDetailsComponent],
     providers: [
-        { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
-    ]
+        { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }]
 })
 export class StudentModule { }

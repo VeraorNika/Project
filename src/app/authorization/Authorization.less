@@ -1,6 +1,6 @@
 @headerfooter_color: rgb(44, 126, 158);
 @input_border_color: rgb(118, 118, 118);
-
+@button-color:rgb(61, 166, 207);
 
 * {
     outline: none;
@@ -18,7 +18,7 @@
     right: 0;
     margin: auto;
     width: 50%;
-    height: 60%;
+    height: 50%;
     padding: 10px;
     color: @headerfooter_color;
     overflow:auto;
@@ -60,13 +60,16 @@ button{
     font-size: 14px;
     border: none;
     border-radius: 3px;
-    background: rgb(61, 166, 207);
+    background: @button-color;
     box-shadow: 0 -3px @headerfooter_color inset;
     cursor: pointer;
 
     &:hover {
         background: @headerfooter_color;
         cursor: pointer;
+    }
+    &:active{
+        background:@button-color
     }
 
     &:disabled {
@@ -79,4 +82,14 @@ a{
 }
 h3 {
     margin: 0px;
+}
+select{
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+    border-radius: 5px;
+    height: 30px;
+    border: 2px solid @input_border_color;
+
+
 }

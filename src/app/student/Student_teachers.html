@@ -3,14 +3,14 @@
     <h3>Список преподавателей</h3>
     <table mat-table [dataSource]="SortedTeachers" matSort class="mat-elevation-z8">
         <ng-container matColumnDef="fullName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Преподаватель</th>
-            <td class="name" mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header >Преподаватель</th>
+            <td class="name" mat-cell *matCellDef="let element" matTooltip="Нажмите, чтобы узнать детали"> {{element.fullName}} </td>
         </ng-container>
 
-        <!-- <ng-container matColumnDef="degree">
-            <th mat-header-cell *matHeaderCellDef >Ученая степень</th>
+        <ng-container matColumnDef="degree">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Ученая степень</th>
             <td mat-cell *matCellDef="let element"> {{element.degree}} </td>
-        </ng-container> -->
+        </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

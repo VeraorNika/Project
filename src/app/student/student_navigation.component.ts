@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 @Component({
     selector: 'student-navigation',
-    styleUrls:['../../assets/styles/Navigation.css'],
+    styleUrls:['./../common_styles/Navigation.css'],
     template: `
     <nav>
         <a routerLink="/student-main-page">Мои задания</a>

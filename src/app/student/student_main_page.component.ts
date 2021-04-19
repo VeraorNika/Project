@@ -1,58 +1,78 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-// Сортировка в таблицах
+import {map} from 'rxjs/operators';
+
+// Таблица
 import { MatSort } from '@angular/material/sort';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 // Необходимые классы
 import { Teacher, Student, Homework } from '../classes/classes';
+
+// Сервисы
+import { CommonStudentService } from '../services/common.student.service';
 import { HomeworkService } from '../services/homework.service';
-
-// Всплывающее окно
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { HomeworkDetailsComponent } from './student_homework_details.component';
-
 
 // firebase
 import { AngularFireDatabase } from "@angular/fire/database";
 
 @Component({
     selector: 'student',
-    styleUrls: ['../../assets/styles/MainPage.css'],
-    templateUrl: '../../assets/html/student/Student_main_page.html',
+    styleUrls: ['./../common_styles/MainPage.css'],
+    templateUrl: './Student_main_page.html',
+    animations:[trigger('detailExpand', [
+        state('collapsed', style({height: '0px', minHeight: '0'})),
+        state('expanded', style({height: '*'})),
+        transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+      ]),],
     providers: [HomeworkService]
 })
 export class StudentComponent implements AfterViewInit {
-    student: Student;
-
-    constructor(private homeworkService: HomeworkService, public dialog: MatDialog, db: AngularFireDatabase) { }
+    student: Student = new Student();
+    
     homeworks: Homework[] = [];
     SortedHomeworks = new MatTableDataSource(this.homeworks);
+    
+    constructor(private homeworkService: HomeworkService, db: AngularFireDatabase, commonStudentService: CommonStudentService) {
+        this.student = commonStudentService.student;
+        console.log(this.student);
+
+        this.retrieveHomeworks();
+        this.SortedHomeworks=new MatTableDataSource(this.homeworks);
+        console.log(this.homeworks);
+        
+    }
+    
+    retrieveHomeworks(){
+        this.homeworkService.getHomeworks().snapshotChanges().pipe(
+            map(changes=>changes.map(c=>({key:c.payload.key, ...c.payload.val()})))
+
+        ).subscribe(data=>{
+                data.forEach(item=>{
+                // let homework=new Homework();
+                // for (let property in item) homework[property]=item[property];
+                // this.homeworks.push(homework); 
+                this.homeworks.push(item as Homework); 
+
+            })
+        });
+    }//end of function
+
     ngOnInit(): void {
-        let homework: Homework = new Homework();
-        homework.name = "Дз по матанализу от 19 ноября";
-        homework.teacher = "Иванов Иван Иванович";
-        homework.startDate = new Date(Date.parse("2021-11-04"));
-        homework.deadlineDate = new Date(Date.parse("2021-11-15"));
-        homework.subject = "Math";
-        homework.status = "Задано";
-        homework.isExpired = false;
-
-        let homework2: Homework = new Homework();
-        homework2.name = "Дз по алгебре от 19 ноября";
-        homework2.teacher = "Петров Петр Петрович";
-        homework2.startDate = new Date(Date.parse("2020-11-04"));
-        homework2.deadlineDate = new Date(Date.parse("2020-11-15"));
-        homework2.subject = "Algebra";
-        homework2.status = "Сделано";
-        homework2.isExpired = true;
-        this.homeworks.push(homework2);
-        this.homeworks.push(homework);
-
-
+        let currentDate: number = new Date().getTime();
+        for (let homework of this.homeworks) {
+            let deadlineDate: number = new Date(homework.deadlineDate).getTime();
+            if (currentDate - deadlineDate > 0 && homework.status == "Задано") {
+                homework.status = "Просрочено";
+                homework.isExpired = true;
+                homework.isDone = false;
+            }
+        }
     }
 
     displayedColumns: string[] = ['subject', 'name', 'deadlineDate', 'teacher', 'status'];
+    expandedElement: Homework |null;
 
     @ViewChild(MatSort) sort: MatSort;
 
@@ -60,14 +80,20 @@ export class StudentComponent implements AfterViewInit {
         this.SortedHomeworks.sort = this.sort;
     }
     showHomeworkDetails() {
-        let dialog = this.dialog.open(HomeworkDetailsComponent);
+        
     }
     changeStatus(homework: Homework) {
-        if (!homework.isExpired) {
-            if (homework.status == "Задано") { homework.isDone = true; homework.status = "Сделано"; }
-            else { homework.isDone = false; homework.status = "Задано"; }
+        if (new Date().getTime() - new Date(homework.deadlineDate).getTime() > 0) {
+            alert('Срок сдачи истёк. Вы не можете изменить статус задания');
         }
-        else alert('Срок сдачи истек. Вы не можете изменить статус задания');
+        else if (homework.isDone) {
+            homework.isDone = false;
+            homework.status = "Задано";
+        }
+        else {
+            homework.isDone = true;
+            homework.status = "Cделано";
+        }
     }
 
 }

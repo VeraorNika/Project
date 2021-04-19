@@ -1,38 +1,45 @@
+export class User {
+
+    fullName: string;
+    login: string;
+    password: string;
+    birthday: string;
+}
+export class Student extends User {
+
+    key?: string | null;
+    group: number;
+    // homeworks?: Homework[];
+    constructor() { super(); };
+}
+export class Teacher extends User {
+
+    key?: string | null;
+    // homeworks?: Homework[];
+    degree?: string;
+    constructor() { super(); };
+}
+
 export class Homework {
+    
     key?: string | null;
     name: string;
     description: string;
-    wishes?: String;
+    wishes?: string;
 
-    teacher: String;
-    subject?: String;
+    teacher: string;
+    teacher_login?:string;
+    subject?: string;
 
-    startDate?: Date;
-    deadlineDate?: Date;
+    startDate: string;
+    deadlineDate: string;
 
     group?: number;
 
     isAsked?: boolean = true;
-    isDone: boolean;
-    isExpired: boolean;
-    status?: String;
+    isDone?: boolean;
+    isExpired?: boolean;
+    status: String;
 }
 
-export class Student {
-    fullName: string;
-    login: string;
-    password: string;
-    birthday?: Date;
-    group: number;
-    homeworks?: Homework[];
-    constructor() { };
-}
-export class Teacher {
-    fullName: string;
-    login: string;
-    password: string;
-    constructor() { };
-    // birthday:Date;
-    // degree?:string;
-}
 

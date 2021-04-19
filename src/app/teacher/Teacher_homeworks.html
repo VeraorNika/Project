@@ -13,7 +13,7 @@
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Нажмите, чтобы отсортировать домашние задания по имени">
                 Домашнее задание</th>
-            <td class="name" mat-cell *matCellDef="let element" routerLink="teacher-homework-details"
+            <td class="name" mat-cell *matCellDef="let element" (click)="updateHomework(element)"
                 matTooltip="Нажмите, чтобы изменить детали работы"> {{element.name}} </td>
         </ng-container>
 

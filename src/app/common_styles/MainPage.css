@@ -55,3 +55,9 @@
 .main_container th.mat-sort-header-sorted {
   color: black;
 }
+.isExpired {
+  background-color: #eb7b7b;
+}
+.isDone {
+  background-color: #31e431;
+}
