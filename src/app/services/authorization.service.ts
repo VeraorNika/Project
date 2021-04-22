@@ -2,14 +2,12 @@ import { Teacher, Student } from '../classes/classes';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from "@angular/fire/database";
 import { Router} from '@angular/router';
-import { CommonStudentService } from '../services/common.student.service';
-import {CommonTeacherService} from '../services/common.teacher.service';
 
 @Injectable()
 export class AuthorizationService {
     teachersRef: AngularFireList<Teacher>;
     teachers: Teacher[] = [];
-    constructor(private db: AngularFireDatabase, private router: Router, private commonStudentService: CommonStudentService, private commonTeacherService: CommonTeacherService) {}
+    constructor(private db: AngularFireDatabase, private router: Router) {}
 
     enterStudent(login: string, password: string): void {
         let studentsRef: AngularFireList<Student> = this.db.list('/students', ref => ref.orderByChild('login').equalTo(login));
@@ -26,7 +24,7 @@ export class AuthorizationService {
                 let student: Student = possiblestudents[0];
                 if (student.password != password) { alert('Неправильный пароль!'); }
                 else {
-                    this.commonStudentService.setStudent(student);
+                    localStorage.setItem('currentStudent', JSON.stringify(student));
                     this.router.navigate([`/student-main-page/`]);
                 }
             }
@@ -48,7 +46,7 @@ export class AuthorizationService {
                 let teacher: Teacher = possibleteachers[0];
                 if (teacher.password != password) { alert('Неправильный пароль!'); }
                 else {
-                    this.commonTeacherService.setTeacher(teacher);
+                    localStorage.setItem('currentTeacher', JSON.stringify(teacher));
                     this.router.navigate([`/teacher-main-page/`]);
                 }
             }

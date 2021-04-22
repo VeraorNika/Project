@@ -1,13 +1,15 @@
-import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
+
+//Таблица
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Teacher, Student } from '../classes/classes';
 
+// Необходимые классы
+import { Teacher, Student } from '../classes/classes';
 
 // firebase и сервисы
 import { StudentService } from '../services/student.service';
-import { CommonTeacherService } from '../services/common.teacher.service';
-import { AngularFireDatabase } from "@angular/fire/database";
 
 @Component({
     selector: 'teacher',
@@ -15,29 +17,30 @@ import { AngularFireDatabase } from "@angular/fire/database";
     templateUrl: './Teacher_main_page.html',
     providers: [StudentService]
 })
-export class TeacherComponent implements OnInit {
+export class TeacherComponent {
+
     teacher: Teacher = new Teacher();
-    
-    constructor(private studentService: StudentService, commonTeacherService: CommonTeacherService) {
-      this.teacher=commonTeacherService.teacher;
-      console.log(this.teacher);
-    }
+
     students: Student[] = [];
-    SortedStudents: any;
-
-    ngOnInit(): void {
-        this.students = this.studentService.getStudents();
-        this.SortedStudents = new MatTableDataSource(this.students);
-        console.log("В компоненте: ", this.students);
-
-    }
-
+    ObservableStudents: Observable<Student[]>;
+    SortedStudents: MatTableDataSource<Student>;
     displayedColumns: string[] = ['fullName', 'group'];
-
     @ViewChild(MatSort) sort: MatSort;
+    constructor(private studentService: StudentService) {
 
-    ngAfterViewInit() {
-        this.SortedStudents.sort = this.sort;
+        this.teacher = JSON.parse(localStorage.getItem('currentTeacher'));
+        console.log(this.teacher);
+        this.ObservableStudents = studentService.getAllStudents();
+        this.ObservableStudents.subscribe(data => {
+            this.students = data;
+            this.SortedStudents = new MatTableDataSource(this.students);
+            this.SortedStudents.sort = this.sort;
+        });
     }
+    applyFilter(event: Event) {
+        const filterValue = (event.target as HTMLInputElement).value;
+        this.SortedStudents.filter = filterValue.trim().toLowerCase();
+    }
+
 }
 

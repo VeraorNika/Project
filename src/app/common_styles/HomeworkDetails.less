@@ -1,4 +1,12 @@
 @input_border_color: rgb(118, 118, 118);
+@input_valid_color: rgb(48, 236, 48);
+@input_invalid_color: rgb(252, 132, 132);
+
+* {
+    outline: none;
+    outline-width: 0px;
+    outline-color: white;
+}
 .main_container{
     h3{
         text-align: center;
@@ -18,14 +26,13 @@
             border: 2px solid @input_border_color;
             &.ng-touched {
                 &.ng-invalid {
-                    border-color: rgb(233, 74, 74);
+                    border-color: @input_invalid_color;
                 }
-
                 &.ng-valid:focus {
-                    border-color: rgb(48, 236, 48);
+                    border-color: @input_valid_color;
                 }
             }
-            &:disabled{
+            &:read-only{
                 cursor:not-allowed;
             }
         }

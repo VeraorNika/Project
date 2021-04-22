@@ -1,6 +1,10 @@
 <div class="main_container">
     <teacher-navigation> </teacher-navigation>
     <h3>Список студентов</h3>
+    <div class="search">
+        <label>Поиск:  </label>
+        <input matInput (keyup)="applyFilter($event)"  #input>
+        </div>
     <table mat-table [dataSource]="SortedStudents" matSort class="mat-elevation-z8">
         <ng-container matColumnDef="fullName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Студент</th>

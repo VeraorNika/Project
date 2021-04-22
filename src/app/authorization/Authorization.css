@@ -36,6 +36,12 @@ input.ng-touched.ng-invalid {
 input.ng-touched.ng-valid:focus {
   border-color: #30ec30;
 }
+input.ng-dirty.ng-invalid {
+  border-color: #e94a4a;
+}
+input.ng-dirty.ng-valid:focus {
+  border-color: #30ec30;
+}
 button {
   display: block;
   margin: 0 auto;

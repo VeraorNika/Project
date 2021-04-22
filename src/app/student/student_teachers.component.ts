@@ -1,48 +1,49 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
 
+// Таблица
 import { MatSort } from '@angular/material/sort';
-import { MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-import {Teacher, Student} from '../classes/classes';
+// Необходимые классы
+import { Teacher, Student } from '../classes/classes';
 
 // Сервисы
-import {TeacherService} from '../services/teacher.service';
-import {CommonStudentService} from '../services/common.student.service';
+import { TeacherService } from '../services/teacher.service';
 
-import  * as moment from 'moment';
 @Component({
     selector: 'teachers',
-    styleUrls:['./../common_styles/MainPage.css'],
-    templateUrl:'./Student_teachers.html',
-     providers:[TeacherService]
+    styleUrls: ['./../common_styles/MainPage.css'],
+    templateUrl: './Student_teachers.html',
+    providers: [TeacherService]
 })
-export class TeachersComponent { 
-    student:Student=new Student();
+export class TeachersComponent {
 
-    constructor(private teacherService: TeacherService, commonStudentService:CommonStudentService ){
-        this.student=commonStudentService.student;
-        console.log(this.student);
-    }
-    teachers:Teacher[]=[];
-    SortedTeachers:any; 
-    
-    ngOnInit(): void {
-        
-        this.teachers=this.teacherService.getTeachers();
-        this.SortedTeachers=new MatTableDataSource(this.teachers);
+    student: Student = new Student();
 
-        // console.log("В компоненте:", this.teachers);  
-    }
-    
+    teachers: Teacher[] = [];
+    dataSource = new MatTableDataSource<Teacher>();
+    ObservableTeachers: Observable<Teacher[]>;
     displayedColumns: string[] = ['fullName', 'degree'];
 
-        @ViewChild(MatSort) sort: MatSort;
+    constructor(private teacherService: TeacherService) {
+        this.student = JSON.parse(localStorage.getItem('currentStudent'));
+        console.log(this.student);
+        this.ObservableTeachers = teacherService.getAllTeachers();
+        this.ObservableTeachers.subscribe(data => this.teachers = data);
+    }
 
-        ngAfterViewInit() {
-            this.SortedTeachers.sort = this.sort;
-        }
+    @ViewChild(MatSort) sort: MatSort;
+    ngOnInit(): void {
+        this.ObservableTeachers.subscribe(teachers => {
+        this.dataSource.data = teachers;
+        this.dataSource.sort = this.sort;
+        })
 
-
+    }
+    applyFilter(event: Event) {
+        const filterValue = (event.target as HTMLInputElement).value;
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
 
 }

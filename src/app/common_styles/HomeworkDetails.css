@@ -1,3 +1,8 @@
+* {
+  outline: none;
+  outline-width: 0px;
+  outline-color: white;
+}
 .main_container h3 {
   text-align: center;
 }
@@ -17,14 +22,14 @@
 }
 .main_container form > .form-group input.ng-touched.ng-invalid,
 .main_container form > .form-group textarea.ng-touched.ng-invalid {
-  border-color: #e94a4a;
+  border-color: #fc8484;
 }
 .main_container form > .form-group input.ng-touched.ng-valid:focus,
 .main_container form > .form-group textarea.ng-touched.ng-valid:focus {
   border-color: #30ec30;
 }
-.main_container form > .form-group input:disabled,
-.main_container form > .form-group textarea:disabled {
+.main_container form > .form-group input:read-only,
+.main_container form > .form-group textarea:read-only {
   cursor: not-allowed;
 }
 .main_container form > .form-group input {

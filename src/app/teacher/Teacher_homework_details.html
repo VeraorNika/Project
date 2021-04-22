@@ -3,24 +3,29 @@
     <h3>Детали домашней работы</h3>
     <form [formGroup]="editHomework" novalidate>
         <div class="form-group">
+            <label>Предмет:</label> <br>
+            <input  class="form-control" name="homework_subject" readonly formControlName="homework_subject"
+                  matInput matTooltip="Вы не можете изменить это поле"/>
+        </div>
+        <div class="form-group">
             <label>Домашнее задание:</label> <br>
-            <textarea rows="3" class="form-control" name="homework_name" formControlName="homework_name"
+            <textarea rows="3" class="form-control" name="homework_name" readonly formControlName="homework_name"
                 style="resize: none;"  matInput matTooltip="Вы не можете изменить это поле"></textarea>
         </div>
 
         <div class="form-group">
             <label>Группа:</label><br>
-            <input class="form-control" name="homework_group" formControlName="homework_group"  />
+            <input class="form-control" name="homework_group" readonly formControlName="homework_group" matInput matTooltip="Вы не можете изменить это поле" />
         </div>
 
         <div class="form-group">
             <label>Начальная дата:</label><br>
-            <input class="form-control" id="homework_startDate" formControlName="homework_startDate" type="date" matInput matTooltip="Вы не можете изменить это поле" />
+            <input class="form-control" id="homework_startDate"  readonly formControlName="homework_startDate" type="date" matInput matTooltip="Вы не можете изменить это поле" />
         </div>
         <div class="form-group">
             <label>Дата завершения:</label><br>
             <input class="form-control" name="homework_deadlineDate" formControlName="homework_deadlineDate" type="date"
-                matInput matTooltip="Конечная дата не должна быть меньше начальной" />
+                matInput matTooltip="Конечная дата не должна быть меньше текущей" />
         </div>
 
         <div class="form-group">

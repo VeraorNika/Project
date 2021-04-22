@@ -3,27 +3,24 @@
   border: 1px solid #2c7e9e;
   margin: 0 auto;
   border-radius: 5px;
-  min-height: 90%;
+  min-height: 95%;
   color: #2c7e9e;
   padding: 10px;
 }
-.main_container h3 {
+.main_container h3,
+.main_container h2,
+.main_container h1 {
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 5px;
   text-align: left;
   font-weight: 600;
 }
-.main_container table {
-  margin: 10px;
-}
 .main_container button {
   display: block;
   position: relative;
-  left: 0;
-  margin-left: 5px;
+  margin: 0 auto;
   margin-top: 20px;
-  margin-bottom: 20px;
   width: 20%;
   height: 30px;
   color: white;
@@ -38,15 +35,21 @@
   background: #3d92b4;
   cursor: pointer;
 }
+.main_container .search {
+  text-align: left;
+  margin-left: 5px;
+}
 .main_container table {
   margin: 0 auto;
+  margin-top: 15px;
   width: 95%;
   text-align: left;
 }
 .main_container table tr:hover {
   background-color: #fbfcc0;
 }
-.main_container table tr td.name:hover {
+.main_container table tr td.name:hover,
+.main_container table tr td.teacher:hover {
   cursor: help;
 }
 .main_container table tr td.student_status:hover {
@@ -55,9 +58,18 @@
 .main_container th.mat-sort-header-sorted {
   color: black;
 }
+.main_container img {
+  float: right;
+  margin: 20px;
+  width: 300px;
+  height: 300px;
+}
+.main_container p {
+  text-align: justify;
+}
 .isExpired {
-  background-color: #eb7b7b;
+  background-color: #fc8888;
 }
 .isDone {
-  background-color: #31e431;
+  background-color: #c0fac0;
 }

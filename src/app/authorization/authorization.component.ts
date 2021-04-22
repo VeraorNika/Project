@@ -13,7 +13,7 @@ export class AuthorizationComponent {
     Authorization: FormGroup = new FormGroup(
         {
             "login": new FormControl("", [Validators.required, Validators.pattern("[A-Za-z0-9_]{6,}")]),
-            "password": new FormControl("", [Validators.required, Validators.pattern("(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z_]{6,}")]),
+            "password": new FormControl("", [Validators.required, Validators.pattern("(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z_!@#$%^&*]{6,}")]),
         });
     get _login() { return this.Authorization.get('login'); }
     get _password() { return this.Authorization.get('password'); }

@@ -1,7 +1,11 @@
 <div class="main_container">
     <teacher-navigation> </teacher-navigation>
-    <h3>Домашние задания: </h3>
-    <button (click)="addHomework()"> Добавить домашнее задание</button>
+    <h3>Домашние задания </h3>
+    
+    <div class="search">
+        <label>Поиск:  </label>
+        <input matInput (keyup)="applyFilter($event)"  #input>
+        </div>
     <table mat-table [dataSource]="SortedHomeworks" matSort class="mat-elevation-z8">
 
         <ng-container matColumnDef="subject">
@@ -34,4 +38,5 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    <button (click)="addHomework()"> Добавить домашнее задание</button>
 </div>

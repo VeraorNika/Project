@@ -13,7 +13,7 @@
   right: 0;
   margin: auto;
   width: 50%;
-  height: 60%;
+  height: 50%;
   padding: 10px;
   color: #2c7e9e;
   overflow: auto;
@@ -36,6 +36,12 @@ input.ng-touched.ng-invalid {
 input.ng-touched.ng-valid:focus {
   border-color: #30ec30;
 }
+input.ng-dirty.ng-invalid {
+  border-color: #e94a4a;
+}
+input.ng-dirty.ng-valid:focus {
+  border-color: #30ec30;
+}
 button {
   display: block;
   margin: 0 auto;
@@ -52,6 +58,9 @@ button {
 button:hover {
   background: #2c7e9e;
   cursor: pointer;
+}
+button:active {
+  background: #3da6cf;
 }
 button:disabled {
   cursor: not-allowed;
@@ -87,4 +96,10 @@ select {
   padding: 10px;
   color: #2c7e9e;
   overflow: auto;
+}
+.registration_container a {
+  position: relative;
+  bottom: 0px;
+  left: 0;
+  right: 0;
 }

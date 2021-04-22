@@ -47,7 +47,14 @@ input {
         &.ng-valid:focus {
             border-color: rgb(48, 236, 48);
         }
-
+    }
+    &.ng-dirty{
+        &.ng-invalid {
+            border-color: rgb(233, 74, 74);
+        }
+        &.ng-valid:focus {
+            border-color: rgb(48, 236, 48);
+        }
     }
 }
 

@@ -9,7 +9,7 @@ import { RegistrationComponent } from './registration.component';
 import { AuthorizationComponent } from './authorization.component';
 
 const AuthoappRoutes: Routes = [
-    { path: 'authorization', component: AuthorizationComponent, canActivate: [AuthorizationGuard] },
+    { path: 'authorization', component: AuthorizationComponent /*, canActivate: [AuthorizationGuard]*/ },
     { path: '', component: AuthorizationComponent },
     { path: 'registration', component: RegistrationComponent },
 ];

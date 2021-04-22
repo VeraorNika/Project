@@ -3,7 +3,7 @@
     <form [formGroup]="Authorization" novalidate>
         <div class="form-group">
             <input class="form-control" name="login" formControlName="login" placeholder="Логин" matInput
-                matTooltip="Логин должен состоять не менее, чем из 6 символов. Разрешены символы латинского алфавита и цифры"
+                matTooltip="Логин должен состоять не менее, чем из 6 символов. Разрешены символы латинского алфавита, цифры и _"
                 [matTooltipDisabled]="(!_login.touched) || (_login.valid)" />
         </div>
 

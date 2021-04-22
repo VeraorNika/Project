@@ -4,18 +4,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+// Таблица
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 
 // Для всплывающего окна
+import { NewHomeworkComponent } from './teacher_newhomework.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NewHomeworkComponent } from './teacher_newhomework.component';
 import { DragDropModule } from "@angular/cdk/drag-drop";
 
+// Свои компоненты
 import { TeacherComponent } from './teacher_main_page.component';
 import { NavigationComponent } from './teacher_navigation.component';
 import { HomeworksComponent } from './teacher_homeworks.component';
@@ -29,7 +31,7 @@ const TeachappRoutes: Routes = [
 
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, ReactiveFormsModule, MatDialogModule, RouterModule.forRoot(TeachappRoutes), MatTooltipModule, CommonModule, DragDropModule, MatTableModule, MatSortModule],
+    imports: [BrowserModule, FormsModule, ReactiveFormsModule, MatDialogModule, RouterModule.forRoot(TeachappRoutes), MatTooltipModule, MatInputModule, CommonModule, DragDropModule, MatTableModule, MatSortModule, MatFormFieldModule],
     declarations: [TeacherComponent, NavigationComponent, HomeworksComponent, HomeworkDetailsComponent, NewHomeworkComponent],
     entryComponents: [NewHomeworkComponent],
     exports: [RouterModule, TeacherComponent, NavigationComponent, HomeworksComponent, HomeworkDetailsComponent],

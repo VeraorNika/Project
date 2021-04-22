@@ -2,6 +2,7 @@ import { Teacher, Student } from '../classes/classes';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from "@angular/fire/database";
 import {AuthorizationService} from './authorization.service';
+import { Observable } from 'rxjs';
 @Injectable()
 export class RegistrationService {
 
@@ -11,13 +12,12 @@ export class RegistrationService {
     }
 
     // Метод внутри работает асинхронно, поэтому возвращается всегда ноль. Исправть
-    ifLoginExists(login: string, isStudent: boolean): number {
-        let counter: number = 0;
-        let studentsRef: AngularFireList<Student> = this.db.list('/students', ref => ref.orderByChild('login').equalTo(login));
-        studentsRef.snapshotChanges().subscribe(item => { item.forEach(element => { counter++; console.log("В процессе проверки ", counter); }); });
-        console.log("После проверки ", counter);
-        return counter;
-    }//end of ifLoginexists
+    getStudentsbyLogin(login:string): Observable<any>{
+         return this.db.list('/students', ref => ref.orderByChild('login').equalTo(login)).valueChanges();
+    };
+    getTeachersbyLogin(login:string): Observable<any>{
+         return this.db.list('/teachers', ref => ref.orderByChild('login').equalTo(login)).valueChanges();
+    };
 
 
     createStudent(student: Student): any {

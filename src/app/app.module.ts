@@ -12,7 +12,6 @@ import { environment } from './../environments/environment';
 
 import {MatDialogModule} from '@angular/material/dialog';
 import {MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
-
 import {AuthorizationModule} from './authorization/authorization.module';
 import {StudentModule} from './student/student.module';
 import {TeacherModule} from './teacher/teacher.module';
@@ -23,8 +22,6 @@ import {HomeworkService} from './services/homework.service';
 import {TeacherService} from './services/teacher.service';
 import {AuthorizationService} from './services/authorization.service';
 import {RegistrationService} from './services/registration.service';
-import {CommonStudentService} from './services/common.student.service';
-import {CommonTeacherService} from './services/common.teacher.service';
 
 import { AppComponent }   from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -45,6 +42,6 @@ const firebaseConfig = {
     imports:      [ AngularFireModule.initializeApp(environment.firebase), AngularFireDatabaseModule, BrowserModule, FormsModule, HttpClientModule, AuthorizationModule, StudentModule, TeacherModule, ProblemsModule, BrowserAnimationsModule, ],
     declarations: [ AppComponent],
     bootstrap:    [ AppComponent ],
-    providers:  [StudentService, CommonStudentService, HomeworkService, TeacherService, CommonTeacherService, AuthorizationService, RegistrationService, {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}]
+    providers:  [StudentService, HomeworkService, TeacherService, AuthorizationService, RegistrationService, {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}]
 })
 export class AppModule { }
