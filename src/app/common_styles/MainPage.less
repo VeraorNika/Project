@@ -97,6 +97,12 @@
     p {
         text-align: justify;
     }
+    .delete{
+        &:hover{
+            background-color:@isExpired_color;
+            cursor:pointer;
+        }
+    }
 }
 
 .isExpired {
@@ -106,3 +112,33 @@
 .isDone {
     background-color: @isDone_color;
 }
+
+
+
+tr.detail-row {
+    height: 0;
+  }
+
+.element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+  
+.element-diagram {
+    width:120%;
+    border: 1px solid black;
+    min-height: 60px;
+    padding-top:10px;
+    text-align:center;
+    h4{
+        margin:0;
+        padding:0;
+    }
+  }
+
+.element-description{
+    margin-bottom:5px;
+}
+  
+
+

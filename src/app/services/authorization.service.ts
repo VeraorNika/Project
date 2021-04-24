@@ -24,6 +24,7 @@ export class AuthorizationService implements OnDestroy {
                     if (student.password != password) { alert('Неправильный пароль'); }
                     else {
                         localStorage.setItem('currentStudent', JSON.stringify(student));
+                        localStorage.setItem('isStudentLogged', 'true');
                         this.router.navigate(['/student-main-page/']);
                         }
                  }
@@ -41,6 +42,7 @@ export class AuthorizationService implements OnDestroy {
                     if (teacher.password != password) { alert('Неправильный пароль'); }
                     else {
                         localStorage.setItem('currentTeacher', JSON.stringify(teacher));
+                        localStorage.setItem('isTeacherLogged', 'true');
                         this.router.navigate(['/teacher-main-page/']);
                     }
                 }

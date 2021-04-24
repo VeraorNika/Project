@@ -19,11 +19,13 @@ import { HomeworkService } from '../services/homework.service';
     selector: 'student',
     styleUrls: ['./../common_styles/MainPage.css'],
     templateUrl: './Student_main_page.html',
-    animations: [trigger('detailExpand', [
-        state('collapsed', style({ height: '0px', minHeight: '0' })),
-        state('expanded', style({ height: '*' })),
-        transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),],
+    animations: [
+        trigger('detailExpand', [
+          state('collapsed', style({height: '0px', minHeight: '0'})),
+          state('expanded', style({height: '*'})),
+          transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+        ]),
+      ],
     providers: [HomeworkService]
 })
 export class StudentComponent implements OnDestroy{
@@ -33,7 +35,9 @@ export class StudentComponent implements OnDestroy{
     ObservableHomeworks: Observable<Homework[]>;
     SortedHomeworks: MatTableDataSource<Homework>;
     subscription;
+
     displayedColumns: string[] = ['subject', 'name', 'deadlineDate', 'teacher', 'status'];
+    expandedElement: Homework|null;
 
     constructor(private homeworkService: HomeworkService) {
         this.student = <Student>JSON.parse(localStorage.getItem('currentStudent'));
@@ -41,7 +45,9 @@ export class StudentComponent implements OnDestroy{
 
         this.ObservableHomeworks = homeworkService.getStudentsHomeworks(this.student.homeworkskey).pipe(
             map(homeworks => homeworks.map(h => ({ key: h.payload.key, ...h.payload.val() }))));
-        // подписка
+
+        // !!!!!подписка!!!!!
+
         this.subscription = this.ObservableHomeworks.subscribe(homeworks => {
             this.homeworks = <Homework[]>homeworks;
             for (let homework of this.homeworks) {
@@ -81,6 +87,7 @@ export class StudentComponent implements OnDestroy{
         const filterValue = (event.target as HTMLInputElement).value;
         this.SortedHomeworks.filter = filterValue.trim().toLowerCase();
     }
+    
     // уничтожение подписки
     ngOnDestroy(): void {
         if (this.subscription) { this.subscription.unsubscribe(); }

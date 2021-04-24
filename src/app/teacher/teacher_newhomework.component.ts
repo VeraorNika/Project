@@ -18,8 +18,8 @@ export class NewHomeworkComponent {
     // Определение формы
     NewHomework: FormGroup = new FormGroup(
         {
-            "homework_subject": new FormControl("", [Validators.required, Validators.maxLength(70)]),
-            "homework_name": new FormControl("", [Validators.required, Validators.maxLength(50)]),
+            "homework_subject": new FormControl("", [Validators.required, Validators.maxLength(50)]),
+            "homework_name": new FormControl("", [Validators.required, Validators.maxLength(100)]),
             "homework_group": new FormControl("", [Validators.required, Validators.pattern("[1-8][1-6][1-9]")]),
             "homework_startDate": new FormControl(moment().format('YYYY-MM-DD')),
             "homework_deadlineDate": new FormControl("", [Validators.required, this.DeadlineDateValidator]),

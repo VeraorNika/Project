@@ -4,13 +4,13 @@
   outline-color: white;
 }
 .main_container {
-  height: 100%;
   padding: 0px;
   width: 100%;
   border: 1px solid #3d92b4;
   border-image-width: 0px;
   color: #266a85;
   padding-bottom: 5px;
+  overflow: auto;
 }
 .main_container h4 {
   display: block;

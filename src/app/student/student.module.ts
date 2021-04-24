@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import{StudentGuard} from './student.guard';
 
 // Таблица
 import { MatInputModule } from '@angular/material/input';
@@ -24,9 +25,9 @@ import { TeacherComponent } from './student_teacher.component';
 
 
 const StudappRoutes: Routes = [
-    { path: 'student-main-page', component: StudentComponent },
-    { path: 'student-main-page/teachers', component: TeachersComponent },
-    { path: 'student-main-page/teachers/teacher', component: TeacherComponent },
+    { path: 'student-main-page', component: StudentComponent, canActivate:[StudentGuard] },
+    { path: 'student-main-page/teachers', component: TeachersComponent, canActivate:[StudentGuard] },
+    { path: 'student-main-page/teachers/teacher', component: TeacherComponent, canActivate:[StudentGuard] },
 
 ];
 
@@ -36,6 +37,6 @@ const StudappRoutes: Routes = [
     declarations: [StudentComponent, StudentNavigationComponent, TeachersComponent, TeacherComponent],
     exports: [RouterModule, StudentComponent, StudentNavigationComponent, TeachersComponent, TeacherComponent],
     providers: [
-        { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }]
+        { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }, StudentGuard]
 })
 export class StudentModule { }

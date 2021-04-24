@@ -36,8 +36,13 @@ export class TeacherComponent implements OnDestroy, OnInit{
             for (let i=0; i<data.length; i++){
                 for (let item in data[i]["homeworks"])//item - объект домашки из "массива" домашек (который перестал быть массивом и стал просто объектом)
                 {
-                    this.studentsandhomeworks.push({fullName:data[i].fullName, group: data[i].group, subject:data[i].homeworks[item].subject, homework: data[i].homeworks[item].name, status:data[i].homeworks[item].status, isExpired:data[i].homeworks[item].isExpired, isDone: data[i].homeworks[item].isDone});
-                
+                    if(data[i].homeworks[item].teacher_login==this.teacher.login){
+                        let currentDate=new Date().getTime();
+                        let deadline= new Date(data[i].homeworks[item].deadlineDate).getTime();
+                        if ((currentDate > deadline) && (data[i].homeworks[item].status=="Задано") ){  data[i].homeworks[item].status="Просрочено"; data[i].homeworks[item].isDone=false; data[i].homeworks[item].isExpired=true;};
+                         this.studentsandhomeworks.push({fullName:data[i].fullName, group: data[i].group, subject:data[i].homeworks[item].subject, homework: data[i].homeworks[item].name, status:data[i].homeworks[item].status, isExpired:data[i].homeworks[item].isExpired, isDone: data[i].homeworks[item].isDone});
+                    }
+                    
                 }    
             }
             this.SortedStudents = new MatTableDataSource(this.studentsandhomeworks);

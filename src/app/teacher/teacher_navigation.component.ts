@@ -15,6 +15,7 @@ export class NavigationComponent {
     exit(){
         if(confirm('Вы уверены, что хотите выйти?')){
             localStorage.removeItem('currentTeacher');
+            localStorage.setItem('isTeacherLogged', 'false');
             this.router.navigate(['/authorization']);
         }
     }

@@ -28,7 +28,7 @@ export class HomeworksComponent  implements OnDestroy{
     homeworks: Homework[]=[];
     ObservableHomeworks:Observable<Homework[]>;
     SortedHomeworks:MatTableDataSource<Homework>;
-    displayedColumns: string[] = ['subject', 'name', 'startDate', 'deadlineDate'];
+    displayedColumns: string[] = ['subject', 'group',  'name', 'startDate', 'deadlineDate', 'delete'];
     @ViewChild(MatSort) sort: MatSort;
 
     constructor(private homeworkService: HomeworkService, public dialog: MatDialog, private router:Router) {
@@ -59,6 +59,10 @@ export class HomeworksComponent  implements OnDestroy{
     applyFilter(event: Event) {
         const filterValue = (event.target as HTMLInputElement).value;
         this.SortedHomeworks.filter = filterValue.trim().toLowerCase();
+    }
+    deleteHomework(homework:Homework){
+        if (confirm("Вы уверены, что хотите удалить задание?"))
+        this.homeworkService.deleteHomework(homework);
     }
     // уничтожение подписки
     ngOnDestroy(){

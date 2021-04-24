@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import {TeacherGuard} from './teacher.guard';
 // Таблица
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,9 +24,9 @@ import { HomeworksComponent } from './teacher_homeworks.component';
 import { HomeworkDetailsComponent } from './teacher_homeworks_details.component';
 
 const TeachappRoutes: Routes = [
-    { path: 'teacher-main-page', component: TeacherComponent },
-    { path: 'teacher-main-page/teacher-homeworks', component: HomeworksComponent },
-    { path: 'teacher-main-page/teacher-homeworks/teacher-homework-details', component: HomeworkDetailsComponent }
+    { path: 'teacher-main-page', component: TeacherComponent, canActivate:[TeacherGuard] },
+    { path: 'teacher-main-page/teacher-homeworks', component: HomeworksComponent, canActivate:[TeacherGuard]  },
+    { path: 'teacher-main-page/teacher-homeworks/teacher-homework-details', component: HomeworkDetailsComponent, canActivate:[TeacherGuard]  }
 ];
 
 
@@ -36,7 +36,7 @@ const TeachappRoutes: Routes = [
     entryComponents: [NewHomeworkComponent],
     exports: [RouterModule, TeacherComponent, NavigationComponent, HomeworksComponent, HomeworkDetailsComponent],
     providers: [
-        { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
+        { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false },  }, TeacherGuard
     ]
 
 })
