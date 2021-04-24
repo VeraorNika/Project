@@ -4,8 +4,9 @@
   outline-color: white;
 }
 .main_container {
+  height: 100%;
   padding: 0px;
-  width: 600px;
+  width: 100%;
   border: 1px solid #3d92b4;
   border-image-width: 0px;
   color: #266a85;
@@ -18,6 +19,10 @@
   width: 100%;
   color: white;
   margin: 0 auto;
+  cursor: grab;
+}
+.main_container h4:active:hover {
+  cursor: grabbing;
 }
 .main_container form > .form-group {
   margin: 0 auto;

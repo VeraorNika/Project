@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnDestroy, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
@@ -26,44 +26,44 @@ import { HomeworkService } from '../services/homework.service';
     ]),],
     providers: [HomeworkService]
 })
-export class StudentComponent {
-    student: Student = new Student();
+export class StudentComponent implements OnDestroy{
 
+    student: Student = new Student();
     homeworks: Homework[] = [];
     ObservableHomeworks: Observable<Homework[]>;
     SortedHomeworks: MatTableDataSource<Homework>;
+    subscription;
     displayedColumns: string[] = ['subject', 'name', 'deadlineDate', 'teacher', 'status'];
 
     constructor(private homeworkService: HomeworkService) {
         this.student = <Student>JSON.parse(localStorage.getItem('currentStudent'));
         console.log(this.student);
-        this.ObservableHomeworks = homeworkService.getHomeworks().pipe(
+
+        this.ObservableHomeworks = homeworkService.getStudentsHomeworks(this.student.homeworkskey).pipe(
             map(homeworks => homeworks.map(h => ({ key: h.payload.key, ...h.payload.val() }))));
-        this.ObservableHomeworks.subscribe(homeworks => {
-            this.homeworks = homeworks;
+        // подписка
+        this.subscription = this.ObservableHomeworks.subscribe(homeworks => {
+            this.homeworks = <Homework[]>homeworks;
             for (let homework of this.homeworks) {
                 let deadlineDate: number = new Date(homework.deadlineDate).getTime();
                 if (new Date().getTime() - deadlineDate > 0 && homework.status == "Задано") {
                     homework.status = "Просрочено";
                     homework.isExpired = true;
                     homework.isDone = false;
+                    this.homeworkService.updateStudentHomeworks(this.student.homeworkskey, homework.stud_key, { status: homework.status, isDone: homework.isDone, isExpired: homework.isExpired });
                 }
             }
             this.SortedHomeworks = new MatTableDataSource(this.homeworks);
-             this.SortedHomeworks.sort = this.sort;
+            this.SortedHomeworks.sort = this.sort;
         });
     }
 
     @ViewChild(MatSort) sort: MatSort;
-    // ngAfterViewInit(): void { this.SortedHomeworks.sort = this.sort; }
 
     showHomeworkDetails() { }
 
     changeStatus(homework: Homework) {
-        if (new Date().getTime() - new Date(homework.deadlineDate).getTime() > 75600000) {
-            let deadline: Date = new Date(new Date(homework.deadlineDate).getTime());
-            console.log("Current time:", new Date());
-            console.log("deadline", deadline);
+        if (new Date().getTime() - new Date(homework.deadlineDate).getTime() > 0) {
             alert('Срок сдачи истёк. Вы не можете изменить статус задания');
         }
         else if (homework.isDone) {
@@ -74,18 +74,16 @@ export class StudentComponent {
             homework.isDone = true;
             homework.status = "Cделано";
         }
-        this.homeworkService.update(homework.key, { status: homework.status, isDone: homework.isDone, isExpired: homework.isExpired });
+        this.homeworkService.updateStudentHomeworks(this.student.homeworkskey, homework.stud_key, { status: homework.status, isDone: homework.isDone, isExpired: homework.isExpired });
     }
 
     applyFilter(event: Event) {
         const filterValue = (event.target as HTMLInputElement).value;
         this.SortedHomeworks.filter = filterValue.trim().toLowerCase();
     }
-
-
-
-
-
-
+    // уничтожение подписки
+    ngOnDestroy(): void {
+        if (this.subscription) { this.subscription.unsubscribe(); }
+    }
 
 }

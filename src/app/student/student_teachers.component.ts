@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 // Таблица
@@ -17,10 +17,10 @@ import { TeacherService } from '../services/teacher.service';
     templateUrl: './Student_teachers.html',
     providers: [TeacherService]
 })
-export class TeachersComponent {
+export class TeachersComponent implements OnDestroy, OnInit {
 
     student: Student = new Student();
-
+    subscription;
     teachers: Teacher[] = [];
     dataSource = new MatTableDataSource<Teacher>();
     ObservableTeachers: Observable<Teacher[]>;
@@ -28,22 +28,26 @@ export class TeachersComponent {
 
     constructor(private teacherService: TeacherService) {
         this.student = JSON.parse(localStorage.getItem('currentStudent'));
-        console.log(this.student);
         this.ObservableTeachers = teacherService.getAllTeachers();
-        this.ObservableTeachers.subscribe(data => this.teachers = data);
+        // создание подписки
+        this.subscription = this.ObservableTeachers.subscribe(data => this.teachers = data);
     }
 
     @ViewChild(MatSort) sort: MatSort;
     ngOnInit(): void {
         this.ObservableTeachers.subscribe(teachers => {
-        this.dataSource.data = teachers;
-        this.dataSource.sort = this.sort;
+            this.dataSource.data = teachers;
+            this.dataSource.sort = this.sort;
         })
 
     }
     applyFilter(event: Event) {
         const filterValue = (event.target as HTMLInputElement).value;
         this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
+
+    ngOnDestroy(): void {
+        if (this.subscription) { this.subscription.unsubscribe();}
     }
 
 }

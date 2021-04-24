@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Homework } from '../classes/classes';
-import * as moment from 'moment';
 import {HomeworkService} from '../services/homework.service';
-import { from } from 'rxjs';
-import { Router } from '@angular/router';
+
 @Component({
     selector: 'homework_detail',
     styleUrls: ['./../common_styles/MainPage.css', './../common_styles/HomeworkDetails.css'],
@@ -13,6 +11,7 @@ import { Router } from '@angular/router';
 export class HomeworkDetailsComponent {
     editHomework:FormGroup;
     homework=new Homework();
+
     constructor(private homeworkService:HomeworkService) {
         this.homework=JSON.parse(localStorage.getItem('currentHomework'));
         console.log(this.homework);
@@ -22,17 +21,17 @@ export class HomeworkDetailsComponent {
             "homework_name": new FormControl(this.homework.name),
             "homework_group": new FormControl(this.homework.group),
             "homework_startDate": new FormControl(this.homework.startDate),
-            "homework_deadlineDate": new FormControl("", [Validators.required, this.homeworkDeadlineDateValidator]),
+            "homework_deadlineDate": new FormControl(this.homework.deadlineDate, [Validators.required, this.homeworkDeadlineDateValidator]),
             "homework_description": new FormControl(this.homework.description, Validators.required),
             "homework_wishes": new FormControl(this.homework.wishes, Validators.maxLength(100)),
         });
      }
-
+    // валидатор для даты
     homeworkDeadlineDateValidator(control: FormControl): { [s: string]: boolean } 
     {
         let deadlineDate: number = new Date(control.value).getTime();
-        let currentDeadlineDate: number = new Date().getTime();
-        if (currentDeadlineDate>deadlineDate) {
+        let currentDate: number = new Date().getTime();
+        if (deadlineDate - currentDate <= 86400000) {
             return { "homework_deadlineDate": true };
         }
         return null;
@@ -43,17 +42,13 @@ export class HomeworkDetailsComponent {
     get _homework_startDate() { return this.editHomework.get('homework_group'); }
     get _homework_deadlineDate() { return this.editHomework.get('homework_deadlineDate'); }
 
-    onInit() {
-    }
-
     saveHomework() {
         let new_deadlineDate=this.editHomework.controls['homework_deadlineDate'].value;
         let new_desription=this.editHomework.controls['homework_description'].value;
         let new_wishes=this.editHomework.controls['homework_wishes'].value;
         let key=this.homework.key;
-        this.homeworkService.update(key, {description:new_desription, wishes:new_wishes, deadlineDate:new_deadlineDate});
+        this.homeworkService.update(key, this.homework.group, {description:new_desription, wishes:new_wishes, deadlineDate:new_deadlineDate});
         localStorage.removeItem('currentHomework');
-    
     }
 
 

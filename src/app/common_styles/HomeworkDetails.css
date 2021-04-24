@@ -22,7 +22,7 @@
 }
 .main_container form > .form-group input.ng-touched.ng-invalid,
 .main_container form > .form-group textarea.ng-touched.ng-invalid {
-  border-color: #fc8484;
+  border-color: #fa3838;
 }
 .main_container form > .form-group input.ng-touched.ng-valid:focus,
 .main_container form > .form-group textarea.ng-touched.ng-valid:focus {

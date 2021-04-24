@@ -35,7 +35,6 @@ const StudappRoutes: Routes = [
     imports: [BrowserModule, FormsModule, MatDialogModule, RouterModule.forRoot(StudappRoutes), CommonModule, DragDropModule, MatTooltipModule, MatTableModule, MatSortModule, MatInputModule, MatFormFieldModule],
     declarations: [StudentComponent, StudentNavigationComponent, TeachersComponent, TeacherComponent],
     exports: [RouterModule, StudentComponent, StudentNavigationComponent, TeachersComponent, TeacherComponent],
-    // entryComponents: [HomeworkDetailsComponent],
     providers: [
         { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }]
 })

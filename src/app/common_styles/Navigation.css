@@ -16,5 +16,6 @@ a {
   color: white;
 }
 a:hover {
+  cursor: pointer;
   background-color: #5b97af;
 }

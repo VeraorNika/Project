@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 @Component({
     selector: 'student-navigation',
-    styleUrls:['./../common_styles/Navigation.css'],
+    styleUrls: ['./../common_styles/Navigation.css'],
     template: `
     <nav>
         <a routerLink="/student-main-page">Мои задания</a>
@@ -10,12 +10,12 @@ import { Router} from '@angular/router';
         <a  (click)="exit()" > Выйти из системы</a>
     </nav>`
 })
-export class StudentNavigationComponent { 
-    
-    constructor(private router:Router){}
+export class StudentNavigationComponent {
 
-    exit(){
-        if(confirm('Вы уверены, что хотите выйти?')){
+    constructor(private router: Router) { }
+
+    exit() {
+        if (confirm('Вы уверены, что хотите выйти?')) {
             localStorage.removeItem('currentStudent');
             this.router.navigate(['/authorization']);
         }

@@ -10,7 +10,8 @@
 
         <div class="form-group" [hidden]="!isStudent">
             <input class="form-control" name="group" formControlName="group" placeholder="Учебная группа" type="number"
-                [required]="isStudent" matInput matTooltip="Номер группы должен состоять из 3 цифр"
+                [required]="isStudent" matInput
+                matTooltip="Номер группы должен состоять из 3 цифр: 1)номер факультета 2)номер курса 3)номер направления"
                 [matTooltipDisabled]="(!_group.touched) || (_group.valid)" />
         </div>
 
@@ -34,19 +35,18 @@
 
 
         <div class="form-group">
-            <input class="form-control" name="birthday" formControlName="birthday" data-placeholder="Дата рождения"
-                type="date" />
+            <input class="form-control" name="birthday" formControlName="birthday" placeholder="Дата рождения"
+                onfocus="(this.type='date')" type="text" onblur="(this.type='text')" />
         </div>
 
         <div class="form-group">
             <input class="form-control" name="login" formControlName="login" placeholder="Логин" matInput
-                matTooltip="Логин должен состоять не менее, чем из 6 символов. Разрешены символы латинского алфавита и цифры"
-                [matTooltipDisabled]="(!_login.touched) || (_login.valid)" />
+                matTooltip="Логин должен состоять не менее, чем из 6 символов из списка: A-z, 0-9, _ и пробела" />
         </div>
 
         <div class="form-group">
             <input class="form-control" name="password" formControlName="password" placeholder="Пароль" matInput
-                matTooltip="Пароль должен состоять не менее, чем из 6 символов (A-Z, a-z, 0-9, _) и обязательно включать в себя  не менее 1 заглавного и  1 строчного символа латинского алфавита" [matTooltipDisabled]="(!_password.touched) || (_password.valid)" />
+                matTooltip="Пароль должен состоять не менее, чем из 6 символов из списка: A-z0-9_!@#$^&* и пробела, и обязательно включать в себя  не менее 1 заглавного и  1 строчного символа латинского алфавита" />
         </div>
 
         <div class="form-group">
@@ -57,8 +57,8 @@
         <div class="form-group">
             <button mat-button [disabled]="Registration.invalid"
                 matTooltip="Нажимая эту кнопку, вы подтверждаете корректность введённых данных">Регистрация </button>
-                <br>
-                <span [hidden]="!loginexists" style = "color:orangered; z-index:1">Такой пользователь уже существует</span>
+            <br>
+            <span [hidden]="!loginexists" style="color:orangered; z-index:1">Такой пользователь уже существует</span>
         </div>
 
     </form>

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import { Teacher } from '../classes/classes';
 import { ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
@@ -10,7 +10,6 @@ import {Subscription} from 'rxjs';
 export class TeacherComponent  {
     
     teacher:Teacher=new Teacher();
-    private routeSubscription: Subscription;
     private querySubscription: Subscription;
 
     constructor(private route: ActivatedRoute){
@@ -19,6 +18,10 @@ export class TeacherComponent  {
                 this.teacher.fullName = queryParam['fullName'];
                 if(queryParam['degree']) { this.teacher.degree = queryParam['degree'];}
             });
+    }
+    
+    ngOnDestroy(): void {
+       if(this.querySubscription){this.querySubscription.unsubscribe();}
     }
 
 

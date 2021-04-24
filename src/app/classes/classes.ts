@@ -6,40 +6,42 @@ export class User {
     birthday: string;
 }
 export class Student extends User {
-
+    homeworkskey: string | null;
     key?: string | null;
     group: number;
-    // homeworks?: Homework[];
     constructor() { super(); };
 }
 export class Teacher extends User {
 
     key?: string | null;
-    // homeworks?: Homework[];
     degree?: string;
     constructor() { super(); };
 }
 
 export class Homework {
-    
+
+    // Идентификатор домашки для учителей и студента
     key?: string | null;
+    stud_key?: string | null;
+    group: number;
+
     name: string;
     description: string;
     wishes?: string;
 
     teacher: string;
-    teacher_login?:string;
+    teacher_login?: string;
     subject?: string;
 
     startDate: string;
     deadlineDate: string;
 
-    group?: number;
-
     isAsked?: boolean = true;
     isDone?: boolean;
     isExpired?: boolean;
     status: String;
+
+
 }
 
 

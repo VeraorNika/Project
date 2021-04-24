@@ -10,8 +10,9 @@
 }
 
 .main_container {
+    height:100%;
     padding: 0px;
-    width: 600px;
+    width: 100%;
     border: 1px solid @h4_background;
     border-image-width: 0px;
     color: @font-color;
@@ -24,6 +25,10 @@
         width: 100%;
         color: white;
         margin: 0 auto;
+        cursor:grab;
+        &:active:hover{
+            cursor:grabbing;
+        }
     }
 
     form>.form-group {
