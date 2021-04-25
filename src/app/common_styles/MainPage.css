@@ -55,6 +55,9 @@
 .main_container table tr td.student_status:hover {
   cursor: pointer;
 }
+.main_container table tr td.teach_homework_group:hover {
+  cursor: pointer;
+}
 .main_container th.mat-sort-header-sorted {
   color: black;
 }
@@ -86,7 +89,6 @@ tr.detail-row {
 }
 .element-diagram {
   width: 120%;
-  border: 1px solid black;
   min-height: 60px;
   padding-top: 10px;
   text-align: center;

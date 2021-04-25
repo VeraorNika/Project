@@ -27,7 +27,7 @@
     button {
         display: block;
         position: relative;
-        margin:0 auto;
+        margin: 0 auto;
         // left: 0;
         // right:0;
         // margin-left: 5px;
@@ -78,6 +78,12 @@
                 }
             }
 
+            td.teach_homework_group {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
         }
 
     }
@@ -97,10 +103,11 @@
     p {
         text-align: justify;
     }
-    .delete{
-        &:hover{
-            background-color:@isExpired_color;
-            cursor:pointer;
+
+    .delete {
+        &:hover {
+            background-color: @isExpired_color;
+            cursor: pointer;
         }
     }
 }
@@ -117,28 +124,25 @@
 
 tr.detail-row {
     height: 0;
-  }
+}
 
 .element-detail {
     overflow: hidden;
     display: flex;
-  }
-  
-.element-diagram {
-    width:120%;
-    border: 1px solid black;
-    min-height: 60px;
-    padding-top:10px;
-    text-align:center;
-    h4{
-        margin:0;
-        padding:0;
-    }
-  }
-
-.element-description{
-    margin-bottom:5px;
 }
-  
 
+.element-diagram {
+    width: 120%;
+    min-height: 60px;
+    padding-top: 10px;
+    text-align: center;
 
+    h4 {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.element-description {
+    margin-bottom: 5px;
+}
