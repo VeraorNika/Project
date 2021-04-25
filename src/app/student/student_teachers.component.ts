@@ -47,7 +47,7 @@ export class TeachersComponent implements OnDestroy, OnInit {
     }
 
     ngOnDestroy(): void {
-        if (this.subscription) { this.subscription.unsubscribe();}
+        if (this.subscription) { this.subscription.unsubscribe(); }
     }
 
 }

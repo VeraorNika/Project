@@ -57,9 +57,9 @@ export class HomeworkService {
         })
     }
 
-    deleteHomework(homework:Homework){
-        let key=homework.key;
-        let group=homework.group;
+    deleteHomework(homework: Homework) {
+        let key = homework.key;
+        let group = homework.group;
         this.db.list('/homeworks').remove(homework.key);
         let temporaryhomeworksRef = this.db.list('/homeworksOfStudents', ref => ref.orderByChild('group').equalTo(group)); //выбрали всех студентов с той же группой
         this.subscription3 = temporaryhomeworksRef.valueChanges().pipe(take(1)).subscribe(data => {//это массив всех студентов
@@ -73,11 +73,11 @@ export class HomeworkService {
                 });
             }
         })
-        
+
     }
-    
+
     //Получить все домашки студентов
-    getAllStudentsHomeworks(){
+    getAllStudentsHomeworks() {
         return this.db.list('/homeworksOfStudents').valueChanges();
 
     }
@@ -99,7 +99,7 @@ export class HomeworkService {
     ngOnDestroy(): void {
         if (this.subscription) { this.subscription.unsubscribe(); }
         if (this.subscription2) { this.subscription2.unsubscribe(); }
-        if (this.subscription3){this.subscription3.unsubscribe();}
+        if (this.subscription3) { this.subscription3.unsubscribe(); }
 
     }
 

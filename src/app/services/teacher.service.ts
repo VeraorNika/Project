@@ -7,7 +7,7 @@ export class TeacherService {
 
     teachersRef: AngularFireList<Teacher>;
     constructor(private db: AngularFireDatabase) { this.teachersRef = db.list('teachers'); }
-    
+
     getAllTeachers() { return this.teachersRef.valueChanges(); }
 
 }

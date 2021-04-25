@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import{StudentGuard} from './student.guard';
+import { StudentGuard } from './student.guard';
 
 // Таблица
 import { MatInputModule } from '@angular/material/input';
@@ -25,9 +25,9 @@ import { TeacherComponent } from './student_teacher.component';
 
 
 const StudappRoutes: Routes = [
-    { path: 'student-main-page', component: StudentComponent, canActivate:[StudentGuard] },
-    { path: 'student-main-page/teachers', component: TeachersComponent, canActivate:[StudentGuard] },
-    { path: 'student-main-page/teachers/teacher', component: TeacherComponent, canActivate:[StudentGuard] },
+    { path: 'student-main-page', component: StudentComponent, canActivate: [StudentGuard] },
+    { path: 'student-main-page/teachers', component: TeachersComponent, canActivate: [StudentGuard] },
+    { path: 'student-main-page/teachers/teacher', component: TeacherComponent, canActivate: [StudentGuard] },
 
 ];
 

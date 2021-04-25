@@ -21,14 +21,14 @@ import { HomeworkService } from '../services/homework.service';
     templateUrl: './Student_main_page.html',
     animations: [
         trigger('detailExpand', [
-          state('collapsed', style({height: '0px', minHeight: '0'})),
-          state('expanded', style({height: '*'})),
-          transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+            state('collapsed', style({ height: '0px', minHeight: '0' })),
+            state('expanded', style({ height: '*' })),
+            transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
         ]),
-      ],
+    ],
     providers: [HomeworkService]
 })
-export class StudentComponent implements OnDestroy{
+export class StudentComponent implements OnDestroy {
 
     student: Student = new Student();
     homeworks: Homework[] = [];
@@ -37,11 +37,10 @@ export class StudentComponent implements OnDestroy{
     subscription;
 
     displayedColumns: string[] = ['subject', 'name', 'deadlineDate', 'teacher', 'status'];
-    expandedElement: Homework|null;
+    expandedElement: Homework | null;
 
     constructor(private homeworkService: HomeworkService) {
         this.student = <Student>JSON.parse(localStorage.getItem('currentStudent'));
-        console.log(this.student);
 
         this.ObservableHomeworks = homeworkService.getStudentsHomeworks(this.student.homeworkskey).pipe(
             map(homeworks => homeworks.map(h => ({ key: h.payload.key, ...h.payload.val() }))));
@@ -87,7 +86,7 @@ export class StudentComponent implements OnDestroy{
         const filterValue = (event.target as HTMLInputElement).value;
         this.SortedHomeworks.filter = filterValue.trim().toLowerCase();
     }
-    
+
     // уничтожение подписки
     ngOnDestroy(): void {
         if (this.subscription) { this.subscription.unsubscribe(); }

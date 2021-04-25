@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Homework } from '../classes/classes';
-import {HomeworkService} from '../services/homework.service';
+import { HomeworkService } from '../services/homework.service';
 
 @Component({
     selector: 'homework_detail',
@@ -9,26 +9,24 @@ import {HomeworkService} from '../services/homework.service';
     templateUrl: './Teacher_homework_details.html',
 })
 export class HomeworkDetailsComponent {
-    editHomework:FormGroup;
-    homework=new Homework();
+    editHomework: FormGroup;
+    homework = new Homework();
 
-    constructor(private homeworkService:HomeworkService) {
-        this.homework=JSON.parse(localStorage.getItem('currentHomework'));
-        console.log(this.homework);
-        this.editHomework= new FormGroup(
-        {
-            "homework_subject":new FormControl(this.homework.subject),
-            "homework_name": new FormControl(this.homework.name),
-            "homework_group": new FormControl(this.homework.group),
-            "homework_startDate": new FormControl(this.homework.startDate),
-            "homework_deadlineDate": new FormControl(this.homework.deadlineDate, [Validators.required, this.homeworkDeadlineDateValidator]),
-            "homework_description": new FormControl(this.homework.description, Validators.required),
-            "homework_wishes": new FormControl(this.homework.wishes, Validators.maxLength(100)),
-        });
-     }
+    constructor(private homeworkService: HomeworkService) {
+        this.homework = JSON.parse(localStorage.getItem('currentHomework'));
+        this.editHomework = new FormGroup(
+            {
+                "homework_subject": new FormControl(this.homework.subject),
+                "homework_name": new FormControl(this.homework.name),
+                "homework_group": new FormControl(this.homework.group),
+                "homework_startDate": new FormControl(this.homework.startDate),
+                "homework_deadlineDate": new FormControl(this.homework.deadlineDate, [Validators.required, this.homeworkDeadlineDateValidator]),
+                "homework_description": new FormControl(this.homework.description, Validators.required),
+                "homework_wishes": new FormControl(this.homework.wishes, Validators.maxLength(100)),
+            });
+    }
     // валидатор для даты
-    homeworkDeadlineDateValidator(control: FormControl): { [s: string]: boolean } 
-    {
+    homeworkDeadlineDateValidator(control: FormControl): { [s: string]: boolean } {
         let deadlineDate: number = new Date(control.value).getTime();
         let currentDate: number = new Date().getTime();
         if (deadlineDate - currentDate <= 86400000) {
@@ -43,11 +41,11 @@ export class HomeworkDetailsComponent {
     get _homework_deadlineDate() { return this.editHomework.get('homework_deadlineDate'); }
 
     saveHomework() {
-        let new_deadlineDate=this.editHomework.controls['homework_deadlineDate'].value;
-        let new_desription=this.editHomework.controls['homework_description'].value;
-        let new_wishes=this.editHomework.controls['homework_wishes'].value;
-        let key=this.homework.key;
-        this.homeworkService.update(key, this.homework.group, {description:new_desription, wishes:new_wishes, deadlineDate:new_deadlineDate});
+        let new_deadlineDate = this.editHomework.controls['homework_deadlineDate'].value;
+        let new_desription = this.editHomework.controls['homework_description'].value;
+        let new_wishes = this.editHomework.controls['homework_wishes'].value;
+        let key = this.homework.key;
+        this.homeworkService.update(key, this.homework.group, { description: new_desription, wishes: new_wishes, deadlineDate: new_deadlineDate });
         localStorage.removeItem('currentHomework');
     }
 
