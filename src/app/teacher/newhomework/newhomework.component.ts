@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Teacher, Homework } from '../classes/classes';
+import { Teacher, Homework } from '../../classes/classes';
 import * as moment from 'moment';
-import { HomeworkService } from '../services/homework.service';
+import { HomeworkService } from '../../services/homework.service';
 
 @Component({
     selector: 'new-homework',
-    styleUrls: ['./../common_styles/Popup.css'],
-    templateUrl: './Teacher_newhomework.html',
+    styleUrls: ['./../../common_styles/Popup.css'],
+    templateUrl: './newhomework.html',
 })
 export class NewHomeworkComponent {
 
@@ -44,26 +44,26 @@ export class NewHomeworkComponent {
 
 
     addNewHomework() {
-            this.homework.subject = this.NewHomework.controls['homework_subject'].value;
-            this.homework.name = this.NewHomework.controls['homework_name'].value;
-            this.homework.group = this.NewHomework.controls['homework_group'].value;
-            if(!this.NewHomework.controls['homework_startDate'].value){
-                this.homework.startDate=new Date().toISOString();
-            }
-            else  {this.homework.startDate = this.NewHomework.controls['homework_startDate'].value;}
-            this.homework.deadlineDate = this.NewHomework.controls['homework_deadlineDate'].value;
-            this.homework.description = this.NewHomework.controls['homework_description'].value;
-            if (!this.NewHomework.controls['homework_wishes'].value) {
-                this.homework.wishes = "-";
-            }
-            else {this.homework.wishes = this.NewHomework.controls['homework_wishes'].value;}
-            this.homework.isDone = false;
-            this.homework.isExpired = false;
-            this.homework.status = "Задано";
-            this.homework.teacher = this.teacher.fullName;
-            this.homework.teacher_login = this.teacher.login;
+        this.homework.subject = this.NewHomework.controls['homework_subject'].value;
+        this.homework.name = this.NewHomework.controls['homework_name'].value;
+        this.homework.group = this.NewHomework.controls['homework_group'].value;
+        if (!this.NewHomework.controls['homework_startDate'].value) {
+            this.homework.startDate = new Date().toISOString();
+        }
+        else { this.homework.startDate = this.NewHomework.controls['homework_startDate'].value; }
+        this.homework.deadlineDate = this.NewHomework.controls['homework_deadlineDate'].value;
+        this.homework.description = this.NewHomework.controls['homework_description'].value;
+        if (!this.NewHomework.controls['homework_wishes'].value) {
+            this.homework.wishes = "-";
+        }
+        else { this.homework.wishes = this.NewHomework.controls['homework_wishes'].value; }
+        this.homework.isDone = false;
+        this.homework.isExpired = false;
+        this.homework.status = "Задано";
+        this.homework.teacher = this.teacher.fullName;
+        this.homework.teacher_login = this.teacher.login;
 
-            this.homeworkService.create(this.homework);
-            this.dialogRef.close();
+        this.homeworkService.create(this.homework);
+        this.dialogRef.close();
     }
 }

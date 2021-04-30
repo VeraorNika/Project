@@ -6,6 +6,7 @@
         <label>Поиск: </label>
         <input matInput (keyup)="applyFilter($event)" #input>
     </div>
+    <button (click)="addHomework()"> Добавить домашнее задание</button>
     <table mat-table [dataSource]="SortedHomeworks" matSort class="mat-elevation-z8" multiTemplateDataRows>
 
         <ng-container matColumnDef="subject">
@@ -73,5 +74,5 @@
         </tr>
         <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
     </table>
-    <button (click)="addHomework()"> Добавить домашнее задание</button>
+
 </div>

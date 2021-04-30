@@ -1,5 +1,6 @@
-@import "Authorization.less";
+@import "../authorization/Authorization.less";
 @headerfooter_color: rgb(44, 126, 158);
+
 .registration_container {
     border: 3px dotted rgb(103, 189, 223);
     border-radius: 5px;
@@ -10,18 +11,20 @@
     right: 0;
     margin: auto;
     width: 50%;
-    height: 65%;
+    height: 68%;
     padding: 10px;
     color: @headerfooter_color;
-    overflow:auto;
-    a{
-        position:relative;
-        bottom: 0px;;
-        left:0;
-        right:0;
+    overflow: auto;
+
+    a {
+        position: relative;
+        bottom: 0px;
+        ;
+        left: 0;
+        right: 0;
     }
-    input[type='date']{
-        color:black;
+
+    input[type='date'] {
+        color: black;
     }
 }
-

@@ -6,7 +6,7 @@ import { AngularFireDatabase, AngularFireList } from "@angular/fire/database";
 export class StudentService {
 
     studentsRef: AngularFireList<Student>;
-    constructor(private db: AngularFireDatabase) { this.studentsRef = db.list('students'); }
+    constructor(private db: AngularFireDatabase) { this.studentsRef = db.list<Student>('students'); }
 
     getAllStudents() { return this.studentsRef.valueChanges(); }
 

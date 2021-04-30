@@ -66,10 +66,17 @@ button:active {
 button:disabled {
   cursor: not-allowed;
 }
+.visiblepassword img {
+  height: 30px;
+  width: 30px;
+}
+.visiblepassword:hover {
+  cursor: pointer;
+}
 a {
   color: #2c7e9e;
   position: relative;
-  bottom: -30px;
+  bottom: -5px;
   left: 0;
   right: 0;
 }
@@ -97,7 +104,7 @@ select {
   right: 0;
   margin: auto;
   width: 50%;
-  height: 65%;
+  height: 68%;
   padding: 10px;
   color: #2c7e9e;
   overflow: auto;

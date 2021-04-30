@@ -7,10 +7,12 @@
     outline-width: 0px;
     outline-color: white;
 }
-.main_container{
-    h3{
+
+.main_container {
+    h3 {
         text-align: center;
     }
+
     form>.form-group {
         margin: 0 auto;
         text-align: center;
@@ -18,29 +20,36 @@
         margin-bottom: 10px;
 
         input,
-        textarea{
+        textarea {
             display: block;
             margin: 0 auto;
             width: 50%;
             border-radius: 5px;
             border: 2px solid @input_border_color;
+
             &.ng-touched {
                 &.ng-invalid {
                     border-color: @input_invalid_color;
                 }
+
                 &.ng-valid:focus {
                     border-color: @input_valid_color;
                 }
             }
-            &:read-only{
-                cursor:not-allowed;
+
+            &:read-only {
+                cursor: not-allowed;
             }
         }
-        input{
-            height:20px;
-        }}
-    form>button{
-        margin:0 auto;
+
+        input {
+            height: 20px;
+        }
+    }
+
+    form>button {
+        margin: 0 auto;
+
         &:disabled {
             cursor: not-allowed;
         }

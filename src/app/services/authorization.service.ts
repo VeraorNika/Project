@@ -3,17 +3,18 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from "@angular/fire/database";
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Injectable()
 export class AuthorizationService implements OnDestroy {
 
     teachersRef: AngularFireList<Teacher>;
     teachers: Teacher[] = [];
-    subscription;
+    subscription: Subscription;
     constructor(private db: AngularFireDatabase, private router: Router) { }
 
     enterStudent(login: string, password: string): void {
-        let studentsRef: AngularFireList<Student> = this.db.list('/students', ref => ref.orderByChild('login').equalTo(login));
+        let studentsRef: AngularFireList<Student> = this.db.list<Student>('/students', ref => ref.orderByChild('login').equalTo(login));
 
         // подписка на изменения
         this.subscription = studentsRef.snapshotChanges().pipe(map(students => students.map(s => ({ key: s.payload.key, ...s.payload.val() })))).subscribe(students => {
@@ -32,7 +33,7 @@ export class AuthorizationService implements OnDestroy {
     }//end of enterStudent
 
     enterTeacher(login: string, password: string): void {
-        let teachersRef: AngularFireList<Teacher> = this.db.list('/teachers', ref => ref.orderByChild('login').equalTo(login));
+        let teachersRef: AngularFireList<Teacher> = this.db.list<Teacher>('/teachers', ref => ref.orderByChild('login').equalTo(login));
 
         this.subscription = teachersRef.snapshotChanges().pipe(map(teachers => teachers.map(t => ({ key: t.payload.key, ...t.payload.val() })))).subscribe(teachers => {
             if (teachers.length == 0) { alert('Такого пользователя не существует!'); }
@@ -49,9 +50,10 @@ export class AuthorizationService implements OnDestroy {
         })//subscribe
     }//end of enterTeacher
 
+
     // отписка от изменений
     ngOnDestroy(): void {
         if (this.subscription) { this.subscription.unsubscribe(); }
     }
 
-}//end of class
+}

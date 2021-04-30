@@ -1,26 +1,28 @@
 @link_color: rgb(129, 190, 214);
-@link_hover_color:rgb(91, 151, 175);
-@margin-left-right:3px;
+@link_hover_color: rgb(91, 151, 175);
+@margin-left-right: 3px;
 
-nav{
-    height:31px;
-    display:flex;
+nav {
+    height: 31px;
+    display: flex;
     justify-content: center;
 }
-a{
-    font-size:21px;
-    display:block;
+
+a {
+    font-size: 21px;
+    display: block;
     text-decoration: none;
-    margin-left:@margin-left-right;
-    margin-right:@margin-left-right;
-    height:100%;
-    width:18%;
+    margin-left: @margin-left-right;
+    margin-right: @margin-left-right;
+    height: 100%;
+    width: 18%;
     background-color: @link_color;
     border-radius: 7px;
-    color:white;
-    &:hover{
-        cursor:pointer;
+    color: white;
+
+    &:hover {
+        cursor: pointer;
         background-color: @link_hover_color;
     }
-    
+
 }

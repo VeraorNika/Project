@@ -1,26 +1,26 @@
 import { Component, ViewChild, OnDestroy, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 // Таблица
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 // Необходимые классы
-import { Teacher, Student } from '../classes/classes';
+import { Teacher, Student } from '../../classes/classes';
 
 // Сервисы
-import { TeacherService } from '../services/teacher.service';
+import { TeacherService } from '../../services/teacher.service';
 
 @Component({
     selector: 'teachers',
-    styleUrls: ['./../common_styles/MainPage.css'],
-    templateUrl: './Student_teachers.html',
+    styleUrls: ['./../../common_styles/MainPage.css'],
+    templateUrl: './teachers.html',
     providers: [TeacherService]
 })
 export class TeachersComponent implements OnDestroy, OnInit {
 
     student: Student = new Student();
-    subscription;
+    subscription: Subscription;
     teachers: Teacher[] = [];
     dataSource = new MatTableDataSource<Teacher>();
     ObservableTeachers: Observable<Teacher[]>;

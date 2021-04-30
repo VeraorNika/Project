@@ -1,11 +1,11 @@
-import { Component} from '@angular/core';
-import { Teacher } from '../classes/classes';
+import { Component } from '@angular/core';
+import { Teacher } from '../../classes/classes';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 @Component({
     selector: 'steacher',
-    styleUrls: ['./../common_styles/MainPage.css'],
-    templateUrl: './Student_teacher.html',
+    styleUrls: ['./../../common_styles/MainPage.css'],
+    templateUrl: './teacher.html',
 })
 export class TeacherComponent {
 

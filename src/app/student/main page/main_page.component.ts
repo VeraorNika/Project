@@ -1,24 +1,23 @@
 import { Component, ViewChild, OnDestroy, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-
+import { Observable, Subscription } from 'rxjs';
 // Таблица
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 // Необходимые классы
-import { Student, Homework } from '../classes/classes';
+import { Student, Homework } from '../../classes/classes';
 
 // Сервисы
-import { HomeworkService } from '../services/homework.service';
+import { HomeworkService } from '../../services/homework.service';
 
 
 
 @Component({
     selector: 'student',
-    styleUrls: ['./../common_styles/MainPage.css'],
-    templateUrl: './Student_main_page.html',
+    styleUrls: ['./../../common_styles/MainPage.css'],
+    templateUrl: './main_page.html',
     animations: [
         trigger('detailExpand', [
             state('collapsed', style({ height: '0px', minHeight: '0' })),
@@ -33,9 +32,10 @@ export class StudentComponent implements OnDestroy {
     student: Student = new Student();
     homeworks: Homework[] = [];
     ObservableHomeworks: Observable<Homework[]>;
-    SortedHomeworks: MatTableDataSource<Homework>;
-    subscription;
+    subscription: Subscription;
+    @ViewChild(MatSort) sort: MatSort;
 
+    SortedHomeworks: MatTableDataSource<Homework>;
     displayedColumns: string[] = ['subject', 'name', 'deadlineDate', 'teacher', 'status'];
     expandedElement: Homework | null;
 
@@ -44,8 +44,6 @@ export class StudentComponent implements OnDestroy {
 
         this.ObservableHomeworks = homeworkService.getStudentsHomeworks(this.student.homeworkskey).pipe(
             map(homeworks => homeworks.map(h => ({ key: h.payload.key, ...h.payload.val() }))));
-
-        // !!!!!подписка!!!!!
 
         this.subscription = this.ObservableHomeworks.subscribe(homeworks => {
             this.homeworks = <Homework[]>homeworks;
@@ -63,9 +61,7 @@ export class StudentComponent implements OnDestroy {
         });
     }
 
-    @ViewChild(MatSort) sort: MatSort;
 
-    showHomeworkDetails() { }
 
     changeStatus(homework: Homework) {
         if (new Date().getTime() - new Date(homework.deadlineDate).getTime() > 0) {

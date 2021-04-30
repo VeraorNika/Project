@@ -13,7 +13,7 @@ import { RegistrationService } from '../services/registration.service';
 export class RegistrationComponent {
     loginexists: boolean = false;
     isStudent: boolean = true;
-    
+
     Registration: FormGroup = new FormGroup(
         {
             "fullName": new FormControl("", [Validators.required]),

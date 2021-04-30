@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Homework } from '../classes/classes';
-import { HomeworkService } from '../services/homework.service';
+import { Homework } from '../../classes/classes';
+import { HomeworkService } from '../../services/homework.service';
 
 @Component({
     selector: 'homework_detail',
-    styleUrls: ['./../common_styles/MainPage.css', './../common_styles/HomeworkDetails.css'],
-    templateUrl: './Teacher_homework_details.html',
+    styleUrls: ['./../../common_styles/MainPage.css', './../../common_styles/HomeworkDetails.css'],
+    templateUrl: './details.html',
 })
 export class HomeworkDetailsComponent {
     editHomework: FormGroup;
@@ -41,10 +41,10 @@ export class HomeworkDetailsComponent {
     get _homework_deadlineDate() { return this.editHomework.get('homework_deadlineDate'); }
 
     saveHomework() {
-        let new_deadlineDate = this.editHomework.controls['homework_deadlineDate'].value;
-        let new_desription = this.editHomework.controls['homework_description'].value;
-        let new_wishes = this.editHomework.controls['homework_wishes'].value;
-        let key = this.homework.key;
+        let new_deadlineDate: string = this.editHomework.controls['homework_deadlineDate'].value;
+        let new_desription: string = this.editHomework.controls['homework_description'].value;
+        let new_wishes: string = this.editHomework.controls['homework_wishes'].value;
+        let key: string = this.homework.key;
         this.homeworkService.update(key, this.homework.group, { description: new_desription, wishes: new_wishes, deadlineDate: new_deadlineDate });
         localStorage.removeItem('currentHomework');
     }

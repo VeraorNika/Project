@@ -20,7 +20,6 @@ export class Teacher extends User {
 
 export class Homework {
 
-    // Идентификатор домашки для учителей и студента
     key?: string | null;
     stud_key?: string | null;
     group: number;
@@ -39,7 +38,7 @@ export class Homework {
     isAsked?: boolean = true;
     isDone?: boolean;
     isExpired?: boolean;
-    status: String;
+    status: string;
 
 
 }
