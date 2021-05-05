@@ -14,7 +14,7 @@ export class AuthorizationComponent {
 
     isStudent: boolean = true;
     isPassword: string = "password";
-    src: string = "https://github.com/VeraorNika/Project/tree/main/src/assets/img/nonvisible.png";
+    src: string = "https://veraornika.github.io/Project/nonvisible.png";
 
     Authorization: FormGroup = new FormGroup({
         "login": new FormControl("", [Validators.required, Validators.pattern("[A-Za-z0-9 _]{6,}")]),
@@ -39,7 +39,7 @@ export class AuthorizationComponent {
         }
         else {
             this.isPassword = "password";
-            this.src = "https://github.com/VeraorNika/Project/tree/main/src/assets/img/visible.png";
+            this.src = "https://veraornika.github.io/Project/visible.png";
         }
     }
 
