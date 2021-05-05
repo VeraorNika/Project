@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { url } from 'node:inspector';
 import { AuthorizationService } from '../services/authorization.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class AuthorizationComponent {
 
     isStudent: boolean = true;
     isPassword: string = "password";
-    src: string = "../../assets/img/nonvisible.png";
+    src: string = "https://github.com/VeraorNika/Project/tree/main/src/assets/img/nonvisible.png";
 
     Authorization: FormGroup = new FormGroup({
         "login": new FormControl("", [Validators.required, Validators.pattern("[A-Za-z0-9 _]{6,}")]),
@@ -38,7 +39,7 @@ export class AuthorizationComponent {
         }
         else {
             this.isPassword = "password";
-            this.src = "../../assets/img/nonvisible.png";
+            this.src = "https://github.com/VeraorNika/Project/tree/main/src/assets/img/visible.png";
         }
     }
 
