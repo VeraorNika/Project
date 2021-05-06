@@ -39,6 +39,8 @@ export class HomeworkDetailsComponent {
     get _homework_group() { return this.editHomework.get('homework_group'); }
     get _homework_startDate() { return this.editHomework.get('homework_group'); }
     get _homework_deadlineDate() { return this.editHomework.get('homework_deadlineDate'); }
+    get _homework_description() { return this.editHomework.get('homework_description'); }
+    get _homework_wishes() { return this.editHomework.get('homework_wishes'); }
 
     saveHomework() {
         let new_deadlineDate: string = this.editHomework.controls['homework_deadlineDate'].value;

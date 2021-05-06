@@ -35,7 +35,7 @@ export class AuthorizationComponent {
     changeVisibility() {
         if (this.isPassword === "password") {
             this.isPassword = "text";
-            this.src = "../../assets/img/visible.png";
+            this.src = "https://www.pngitem.com/pimgs/m/340-3409667_show-hide-icon-png-hide-png-transparent-png.png";
         }
         else {
             this.isPassword = "password";

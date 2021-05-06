@@ -36,6 +36,16 @@
                     border-color: @input_valid_color;
                 }
             }
+            &[type="date"]{
+                &.ng-invalid {
+                    border-color: @input_invalid_color;
+                }
+
+                &.ng-valid:focus {
+                    border-color: @input_valid_color;
+                }
+                
+            }
 
             &:read-only {
                 cursor: not-allowed;
