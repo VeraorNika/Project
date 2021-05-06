@@ -15,6 +15,7 @@ export class AuthorizationComponent {
     isStudent: boolean = true;
     isPassword: string = "password";
     src: string = "https://www.pngitem.com/pimgs/m/340-3409667_show-hide-icon-png-hide-png-transparent-png.png";
+    tooltip:string="Сделать пароль видимым";
 
     Authorization: FormGroup = new FormGroup({
         "login": new FormControl("", [Validators.required, Validators.pattern("[A-Za-z0-9 _]{6,}")]),
@@ -35,11 +36,13 @@ export class AuthorizationComponent {
     changeVisibility() {
         if (this.isPassword === "password") {
             this.isPassword = "text";
-            this.src = "https://www.pngitem.com/pimgs/m/340-3409667_show-hide-icon-png-hide-png-transparent-png.png";
+            this.src = "https://image.flaticon.com/icons/png/512/15/15638.png";
+            this.tooltip="Сделать пароль невидимым";
         }
         else {
             this.isPassword = "password";
-            this.src = "https://image.flaticon.com/icons/png/512/15/15638.png";
+            this.src = "https://www.pngitem.com/pimgs/m/340-3409667_show-hide-icon-png-hide-png-transparent-png.png";
+            this.tooltip="Сделать пароль видимым";
         }
     }
 

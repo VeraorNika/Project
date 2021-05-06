@@ -28,7 +28,7 @@
             <label>Дата завершения:</label><br>
             <input class="form-control" name="homework_deadlineDate" formControlName="homework_deadlineDate" type="date"
                 matInput matTooltip="Конечная дата не должна быть меньше текущей и начальной дат"
-                [matTooltipDisabled]="!_homework_deadlineDate.valid" />
+                [matTooltipDisabled]="_homework_deadlineDate.valid" />
         </div>
 
         <div class="form-group">
